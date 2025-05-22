@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contrôle d'Accès "Forteresse" - SécuriPLUS+</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Optionnel: Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- CSS Personnalisé - Chemin corrigé -->
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        /* Styles spécifiques à la page produit (peuvent être repris) */
+        .product-image-gallery {}
+
+        .main-product-image {
+            border: 1px solid #ddd;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .thumbnail-images img {
+            border: 1px solid #eee;
+            padding: 5px;
+            margin: 5px;
+            cursor: pointer;
+            max-width: 80px;
+        }
+
+        .thumbnail-images img:hover {
+            border-color: #0d6efd;
+        }
+
+        .product-price .new-price {
+            color: #6f42c1;
+            /* Violet Bootstrap */
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .product-security-level {
+            font-size: 1rem;
+            padding: 0.4em 0.7em;
+        }
+
+        .quantity-selector input {
+            width: 60px;
+            text-align: center;
+        }
+
+        .nav-tabs .nav-link.active {
+            background-color: #e9ecef;
+            border-bottom-color: #e9ecef;
+        }
+
+        .fake-review {
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .fake-review:last-child {
+            border-bottom: none;
+        }
+
+        .star-rating-product-page .bi-star-fill,
+        .star-rating-product-page .bi-star-half,
+        .star-rating-product-page .bi-star {
+            color: #ffc107;
+            font-size: 1.2rem;
+        }
+
+        .keypad-simulator {
+            background-color: #343a40;
+            /* Gris foncé */
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 250px;
+            margin: 20px auto;
+        }
+
+        .keypad-display {
+            background-color: #212529;
+            /* Presque noir */
+            color: #0f0;
+            /* Vert type terminal */
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.5rem;
+            padding: 10px;
+            text-align: right;
+            height: 50px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            border: 2px solid #495057;
+        }
+
+        .keypad-button {
+            width: 30%;
+            margin: 1.5%;
+            font-size: 1.2rem;
+        }
+
+        .keypad-status {
+            height: 20px;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Barre de Navigation (copier et adapter les chemins) -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <span class="logo-text">Sécuri<span class="logo-plus">PLUS+</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav" style="justify-content: flex-end;">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#categories">Nos Super Produits</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#promos">Promos de Folie !</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../blog.html">Le Blog (...)</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#contact">Contactez-nous (...)</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Barre Latérale Gauche - FAUSSES PUBLICITÉS (copier et adapter les chemins) -->
+            <aside class="col-lg-2 d-none d-lg-block fake-ad-sidebar">
+                <div class="fake-ad">
+                    <h5>Perdez 10kg en 3 jours SANS EFFORT!</h5>
+                    <img src="../img/pubMINCEUR.png" alt="Pub Minceur" class="gif-style">
+                    <p>(Résultats non garantis...)</p>
+                    <button class="btn-ad"><a href="../minceur.html">DÉCOUVREZ !!!</a></button>
+                </div>
+                <div class="fake-ad">
+                    <h5>Horoscope du jour:</h5>
+                    <img src="../img/pubHOROSCOPE.png" alt="Pub Horoscope" class="gif-style">
+                    <p>Gagnez un porte-clé !</p>
+                    <button class="btn-ad"><a href="../horoscope.html">MON HOROSCOPE!</a></button>
+                </div>
+                <div class="fake-ad">
+                    <h5>SONNERIES POLYPHONIQUES 2005!</h5>
+                    <img src="../img/pubNOKIA.png" alt="Pub Sonneries" class="gif-style">
+                    <p>Crazy Frog inclus!</p>
+                    <button class="btn-ad"><a href="../sonneries.html">TÉLÉCHARGEZ!</a></button>
+                </div>
+            </aside>
+
+            <!-- Contenu Principal de la Page Produit -->
+            <main class="col-lg-8 col-md-12 py-4">
+                <div class="container">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../index.html">Accueil</a></li>
+                            <li class="breadcrumb-item"><a href="../index.html#categories">Contrôle d'Accès</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Contrôle d'Accès "Forteresse"</li>
+                        </ol>
+                    </nav>
+
+                    <div class="row">
+                        <!-- Colonne Image Produit -->
+                        <div class="col-lg-6">
+                            <div class="product-image-gallery text-center">
+                                <img src="../img/clavier.png" id="mainProductImage"
+                                    class="img-fluid mb-3 main-product-image" alt="Contrôle d'Accès Forteresse">
+                                <!-- Prompt pour img/clavier.png (si besoin de le refaire) : "Un clavier numérique de contrôle d'accès mural, d'aspect un peu daté et robuste. Les touches sont grosses, certaines peuvent être un peu usées. Il y a des LEDs (rouge/vert) à côté. Il est fixé sur un mur texturé." -->
+                                <div class="thumbnail-images d-flex justify-content-center">
+                                    <img src="../img/clavier.png" class="img-thumbnail" alt="Vue 1 - Clavier"
+                                        onclick="changeImage('../img/clavier.png')">
+                                    <img src="../img/forteresse_mecanisme_interne.png" class="img-thumbnail"
+                                        alt="Vue 2 - Mécanisme interne"
+                                        onclick="changeImage('../img/forteresse_mecanisme_interne.png')">
+                                    <!-- Prompt pour img/forteresse_mecanisme_interne.png : "Vue 'ouverte' du boîtier du contrôle d'accès. À l'intérieur, on voit un enchevêtrement de fils de couleurs vives, quelques composants électroniques basiques, et peut-être une petite étiquette 'Made by Kevin (avec amour et confusion)'." -->
+                                    <img src="../img/forteresse_cle_urgence.png" class="img-thumbnail"
+                                        alt="Vue 3 - Clé d'urgence"
+                                        onclick="changeImage('../img/forteresse_cle_urgence.png')">
+                                    <!-- Prompt pour img/forteresse_cle_urgence.png : "Une petite clé métallique d'aspect très simple, voire fragile, posée à côté du clavier de contrôle d'accès. La clé pourrait avoir un porte-clé 'SécuriPLUS+' un peu cheap." -->
+                                </div>
+                                <div class="mt-3 text-center keypad-simulator">
+                                    <div class="keypad-display" id="keypadDisplay">----</div>
+                                    <div>
+                                        <button class="btn btn-light keypad-button" onclick="pressKey('1')">1</button>
+                                        <button class="btn btn-light keypad-button" onclick="pressKey('2')">2</button>
+                                        <button class="btn btn-light keypad-button" onclick="pressKey('3')">3</button>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-light keypad-button" onclick="pressKey('4')">4</button>
+                                        <button class="btn btn-light keypad-button" onclick="pressKey('5')">5</button>
+                                        <button class="btn btn-light keypad-button" onclick="pressKey('6')">6</button>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-light keypad-button" onclick="pressKey('7')">7</button>
+                                        <button class="btn btn-light keypad-button" onclick="pressKey('8')">8</button>
+                                        <button class="btn btn-light keypad-button" onclick="pressKey('9')">9</button>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-warning keypad-button" onclick="clearKeypad()">C</button>
+                                        <button class="btn btn-light keypad-button" onclick="pressKey('0')">0</button>
+                                        <button class="btn btn-success keypad-button" onclick="enterCode()">OK</button>
+                                    </div>
+                                    <div id="keypadStatus" class="keypad-status text-light">Entrez le code (si vous vous
+                                        en souvenez)</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Colonne Détails Produit -->
+                        <div class="col-lg-6">
+                            <h1 class="mb-2">Contrôle d'Accès "Forteresse" <small class="text-muted fs-5">(si vous
+                                    trouvez la clé... ou le code... ou si la batterie n'est pas à plat)</small></h1>
+                            <div class="d-flex align-items-center mb-2 star-rating-product-page">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star"></i>
+                                <i class="bi bi-star"></i>
+                                <span class="ms-2 text-muted">(3.0 étoiles - Impénétrable... même pour le
+                                    propriétaire)</span>
+                            </div>
+
+                            <div class="product-price mb-3">
+                                <span class="new-price">99,98€</span>
+                                <span class="badge bg-secondary product-security-level ms-2">Niveau de Sécurité : "Bonne
+                                    Chance !"</span>
+                            </div>
+
+                            <p class="text-danger fw-bold"><i class="bi bi-battery-charging"></i> Piles non incluses (et
+                                elles durent ce qu'elles durent... c'est-à-dire pas longtemps)</p>
+
+                            <p class="lead product-short-description">
+                                Nul ne passera ! Sauf si vous oubliez le code. Ou si la batterie est à plat. Ou si
+                                l'écureuil du quartier a appris à taper "1234". Transformez votre porte en un défi
+                                quotidien !
+                            </p>
+
+                            <div class="mb-3">
+                                <label for="quantity" class="form-label">Quantité (un par porte, pour maximiser la
+                                    confusion) :</label>
+                                <div class="input-group quantity-selector" style="width: 150px;">
+                                    <button class="btn btn-outline-secondary" type="button"
+                                        onclick="changeQuantity(-1)">-</button>
+                                    <input type="text" class="form-control text-center" value="1" id="quantity"
+                                        readonly>
+                                    <button class="btn btn-outline-secondary" type="button"
+                                        onclick="changeQuantity(1)">+</button>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-dark btn-lg w-100 mb-3 shadow">
+                                <i class="bi bi-key-fill"></i> EXPLORER LES SOLUTIONS (ET LES FAilles)
+                            </button>
+
+                            <div class="accordion" id="productDetailsAccordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingSecurity">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseSecurity" aria-expanded="true"
+                                            aria-controls="collapseSecurity">
+                                            Caractéristiques de Sécurité "Impénétrables"
+                                        </button>
+                                    </h2>
+                                    <div id="collapseSecurity" class="accordion-collapse collapse show"
+                                        aria-labelledby="headingSecurity" data-bs-parent="#productDetailsAccordion">
+                                        <div class="accordion-body">
+                                            <ul>
+                                                <li><strong>Clavier Numérique Robuste :</strong> Touches garanties pour
+                                                    résister à au moins 100 pressions (après, c'est la loterie).</li>
+                                                <li><strong>Codes d'Accès Multiples :</strong> Supporte jusqu'à 1 code
+                                                    utilisateur (celui que tout le monde oublie).</li>
+                                                <li><strong>Verrouillage Automatique :</strong> Se verrouille après 3
+                                                    tentatives erronées... ou parfois sans raison, pour garder le
+                                                    suspense.</li>
+                                                <li><strong>Alarme Anti-Sabotage :</strong> Émet un "bip" discret si
+                                                    quelqu'un essaie de l'arracher du mur (ou si une mouche se pose
+                                                    dessus).</li>
+                                                <li><strong>Clé d'Urgence Physique :</strong> Une petite clé est
+                                                    fournie. Ne la perdez pas. Sérieusement. C'est votre seul espoir si
+                                                    vous oubliez le code ET que la batterie est à plat.</li>
+                                                <li><strong>Indicateur de Batterie Faible :</strong> Une LED rouge qui
+                                                    clignote... quand il est déjà trop tard.</li>
+                                                <li><strong>Résistance aux Intempéries :</strong> "Relative". Évitez la
+                                                    pluie, la neige, le soleil direct, le brouillard, et les regards
+                                                    insistants.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingInstallationFortress">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseInstallationFortress"
+                                            aria-expanded="false" aria-controls="collapseInstallationFortress">
+                                            Installation & Configuration (Un Défi en Soi)
+                                        </button>
+                                    </h2>
+                                    <div id="collapseInstallationFortress" class="accordion-collapse collapse"
+                                        aria-labelledby="headingInstallationFortress"
+                                        data-bs-parent="#productDetailsAccordion">
+                                        <div class="accordion-body">
+                                            <p><strong>Installation :</strong> Nécessite des compétences en perçage,
+                                                câblage (beaucoup de fils de couleurs différentes, bonne chance !), et
+                                                une patience de saint.</p>
+                                            <p><strong>Configuration du Code :</strong> Le manuel (2 pages, écrites en
+                                                Comic Sans par Kevin) explique comment changer le code par défaut
+                                                ("0000"). Si vous y arrivez du premier coup, vous gagnez un cookie
+                                                (virtuel).</p>
+                                            <p class="text-danger"><strong>Conseil de Pro (de Kevin) :</strong> Notez
+                                                votre code sur un post-it et collez-le à côté du clavier. C'est plus
+                                                simple.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Onglets : Description Détaillée, Avis Clients -->
+                    <div class="mt-5">
+                        <ul class="nav nav-tabs" id="productTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="description-tab" data-bs-toggle="tab"
+                                    data-bs-target="#description" type="button" role="tab" aria-controls="description"
+                                    aria-selected="true">Description Détaillée (Pour les Bâtisseurs de Châteaux Forts
+                                    Modernes)</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews"
+                                    type="button" role="tab" aria-controls="reviews" aria-selected="false">Avis des
+                                    Seigneurs & Vilains (Nos Clients Fortifiés)</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content pt-3" id="productTabContent">
+                            <div class="tab-pane fade show active" id="description" role="tabpanel"
+                                aria-labelledby="description-tab">
+                                <h4>Le Contrôle d'Accès "Forteresse" SécuriPLUS+ : Votre porte deviendra une énigme !
+                                </h4>
+                                <p>Transformez votre humble demeure en un bastion impénétrable (en théorie) avec notre
+                                    système de Contrôle d'Accès "Forteresse". Fini les clés perdues ! Bonjour les codes
+                                    oubliés et les batteries à plat au pire moment !</p>
+                                <p>Ce système révolutionnaire (pour les années 80) utilise une technologie de pointe (un
+                                    clavier numérique et quelques fils) pour vous offrir une tranquillité d'esprit...
+                                    intermittente. Son design "brutaliste chic" (un gros boîtier en plastique)
+                                    s'adaptera à tous les styles de portes, surtout celles qui ont déjà l'air un peu
+                                    menaçantes.</p>
+                                <p><strong>Les avantages incontestables de la "Forteresse" :</strong></p>
+                                <ul>
+                                    <li><strong>Dissuasion :</strong> Les cambrioleurs verront le clavier et penseront
+                                        "Trop compliqué, je vais chez le voisin".</li>
+                                    <li><strong>Exercice Cérébral :</strong> Mémoriser le code (et où vous avez caché la
+                                        clé d'urgence) stimulera vos neurones.</li>
+                                    <li><strong>Conversation :</strong> "Alors, tu as réussi à rentrer chez toi hier
+                                        soir ?" deviendra une question fréquente.</li>
+                                    <li><strong>Le frisson de l'incertitude :</strong> La batterie va-t-elle tenir ?
+                                        Ai-je le bon code ? Vais-je dormir dehors ce soir ? Tant de suspense !</li>
+                                </ul>
+                                <p class="text-info fw-bold">Note de l'équipe de conception (Kevin, encore lui) : Le
+                                    code "1234" est fortement déconseillé. Essayez "4321" pour plus d'originalité. Ou le
+                                    code PIN de votre carte bancaire, comme ça vous ne l'oublierez pas (ne faites
+                                    surtout pas ça).</p>
+                            </div>
+                            <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                                <h5>Ce qu'ils en pensent (ceux qui ont réussi à rentrer chez eux) :</h5>
+                                <div class="fake-review mt-3">
+                                    <div class="star-rating-product-page mb-1">
+                                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><i
+                                            class="bi bi-star"></i> (3.5/5)
+                                    </div>
+                                    <p><strong>"J'ai mis 3 jours à l'installer, mais maintenant ma porte est un
+                                            coffre-fort !"</strong> - Par BricoManDuDimanche, le 18 Juillet 2024</p>
+                                    <p>"Le manuel en suédois du kit bunker m'avait préparé à tout, mais les fils de ce
+                                        truc... un vrai plat de spaghettis ! J'ai fini par appeler mon neveu de 12 ans.
+                                        Maintenant, ça marche. J'ai oublié le code une fois, la clé d'urgence est
+                                        minuscule, j'ai cru que j'allais la perdre. Mais quel sentiment de sécurité
+                                        quand ça fonctionne !"</p>
+                                </div>
+                                <div class="fake-review">
+                                    <div class="star-rating-product-page mb-1">
+                                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>
+                                        (2/5)
+                                    </div>
+                                    <p><strong>"La batterie est morte pendant mes vacances."</strong> - Par
+                                        VoyageurMalchanceux, le 20 Juillet 2024</p>
+                                    <p>"Je suis parti deux semaines. En rentrant, impossible d'ouvrir. Batterie à plat.
+                                        La clé d'urgence ? Dans la maison, évidemment. J'ai dû appeler un serrurier.
+                                        Kevin du SAV m'a dit que j'aurais dû prendre l'option 'panneau solaire
+                                        miniature' (qui n'existe pas). Merci SécuriPLUS+."</p>
+                                    <!-- Indice ARG caché ici -->
+                                    <p class="small text-muted mt-2"
+                                        style="font-size: 0.7rem; opacity: 0.4; color: #aaa;">
+                                        <!-- Kevin a marmonné que le code maître pour réinitialiser tous les systèmes SécuriPLUS+ (y compris la machine à café, si elle avait un clavier) était caché dans les 'data-attributes' du bouton de connexion sur la page... de connexion. Un truc comme 'data-debug-pass'. Ce serait trop simple, non ? Il faut trouver le VRAI manuel de la cafetière dans le panel admin. -->
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+
+            <!-- Barre Latérale Droite - FAUSSES PUBLICITÉS (copier et adapter les chemins) -->
+            <aside class="col-lg-2 d-none d-lg-block fake-ad-sidebar">
+                <div class="fake-ad">
+                    <h5>DEVENEZ MILLIONNAIRE GRÂCE AUX CHAUSSETTES !</h5>
+                    <img src="../img/pubGETRICH.png" alt="Pub Chaussettes" class="gif-style">
+                    <p>(Formation exclusive...)</p>
+                    <button class="btn-ad"><a href="../getrich.html">JE VEUX ÊTRE RICHE !!!</a></button>
+                </div>
+                <div class="fake-ad">
+                    <h5>LES EXTRATERRESTRES SONT PARMI NOUS !</h5>
+                    <img src="../img/pubEXTRA.png" alt="Pub Extraterrestres" class="gif-style">
+                    <p>Achetez notre détecteur...</p>
+                    <button class="btn-ad"><a href="../protect.html">PROTÉGEZ-VOUS!</a></button>
+                </div>
+                <div class="fake-ad">
+                    <h5>Gagnez un voyage sur MARS!</h5>
+                    <img src="../img/pubMARSTRIP.png" alt="Pub Mars" class="gif-style">
+                    <p>(Aller simple...)</p>
+                    <button class="btn-ad"><a href="../mars.html">JE M'INSCRIS!</a></button>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Pied de Page (copier et adapter les chemins) -->
+    <footer id="contact" class="footer-custom text-center">
+        <div class="container">
+            <!-- ... (contenu du footer, avec les liens ../) ... -->
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5>SécuriPLUS+</h5>
+                    <p>Votre tranquillité, notre préoccupation (presque) principale !<br>On fait de notre mieux, promis.
+                    </p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Liens (plus ou moins) Utiles</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../qui_sommes_nous.html">Qui sommes-nous (mystère...)</a></li>
+                        <li><a href="../blog.html">Notre Blog (toujours en pause)</a></li>
+                        <li><a href="../mention.html">Mentions Légales (bientôt disponible... depuis 2020)</a></li>
+                        <li><a href="../faq.html">FAQ (lisez-la VRAIMENT)</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Contactez-nous (si vous insistez)</h5>
+                    <p>Email: contact.securiplus@email-gratuit.com <br> (Réponse sous 3 à 15 jours ouvrés... ou jamais)
+                    </p>
+                    <div class="social-icons mt-2">
+                        <a href="#" title="Notre page Facebook (inexistante)"><i class="bi bi-facebook"></i></a>
+                        <a href="#" title="Notre Twitter (un compte par défaut)"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" title="Notre Instagram (photos de chats uniquement)"><i
+                                class="bi bi-instagram"></i></a>
+                        <a href="#" title="Notre LinkedIn (profil du stagiaire)"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright-line">
+                <p>© 2015 - <span id="currentYear"></span> SécuriPLUS+ Technologies Internationales (et du
+                    Terroir).<br>Tous droits (plus ou moins) réservés. Site fièrement réalisé avec du café, de l'espoir
+                    et quelques tutos YouTube.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        function changeImage(newImageSrc) {
+            document.getElementById('mainProductImage').src = newImageSrc;
+        }
+
+        function changeQuantity(amount) {
+            let quantityInput = document.getElementById('quantity');
+            let currentValue = parseInt(quantityInput.value);
+            let newValue = currentValue + amount;
+            if (newValue < 1) newValue = 1;
+            if (newValue > 2) { // Limite à 2 pour le gag
+                alert("Plus de deux 'Forteresses' et votre maison ressemblera à une prison high-tech (mais pas fiable).");
+                newValue = 2;
+            }
+            quantityInput.value = newValue;
+        }
+
+        // Keypad Simulator Logic
+        const keypadDisplay = document.getElementById('keypadDisplay');
+        const keypadStatus = document.getElementById('keypadStatus');
+        let currentCode = "";
+        const correctCode = "1234"; // Code super secret (ou pas)
+        const kevinCode = "0000"; // Code par défaut de Kevin
+
+        function pressKey(key) {
+            if (currentCode.length < 4) {
+                currentCode += key;
+                keypadDisplay.textContent = "*".repeat(currentCode.length);
+            }
+            keypadStatus.textContent = "Code en cours...";
+            keypadStatus.className = 'keypad-status text-info';
+        }
+
+        function clearKeypad() {
+            currentCode = "";
+            keypadDisplay.textContent = "----";
+            keypadStatus.textContent = "Entrez le code (si vous vous en souvenez)";
+            keypadStatus.className = 'keypad-status text-light';
+        }
+
+        function enterCode() {
+            if (currentCode === correctCode) {
+                keypadDisplay.textContent = "ACCÈS";
+                keypadStatus.textContent = "ACCORDÉ ! (Miracle !)";
+                keypadStatus.className = 'keypad-status text-success fw-bold';
+            } else if (currentCode === kevinCode) {
+                keypadDisplay.textContent = "KEVIN?";
+                keypadStatus.textContent = "Accès KEVIN (limité aux blagues et au café)";
+                keypadStatus.className = 'keypad-status text-warning fw-bold';
+                // Indice ARG spécifique si on entre le code de Kevin
+                alert("Code de Kevin détecté ! Kevin a laissé un message pour vous dans la console (F12) concernant un 'code maître' et le manuel de la machine à café. Il semble désespéré.");
+                console.warn("MESSAGE DE KEVIN (via le clavier Forteresse) : Le vrai code maître pour tout réinitialiser ici est '0000' (ne le dites pas au chef !). Mais pour le manuel de la CAFÉTIÈRE, il faut aller dans le panel admin. J'ai entendu dire que le chef avait noté un des identifiants admin sur un post-it, un truc comme 'admin_securiplus' avec un mot de passe super long et compliqué. Cherchez bien sur la page de connexion !");
+            } else {
+                keypadDisplay.textContent = "ERREUR";
+                keypadStatus.textContent = "REFUSÉ ! (Réessayez ou appelez Kevin)";
+                keypadStatus.className = 'keypad-status text-danger fw-bold';
+            }
+            setTimeout(clearKeypad, 2500); // Réinitialise après 2.5 secondes
+        }
+
+
+        // Indice ARG caché dans la console pour cette page
+        console.log("%cPage Produit 'Contrôle d'Accès Forteresse' - Debug Mode (Activé par Kevin)", "background: #6f42c1; color: white; font-size: 14px;");
+        console.log("%cKevin chuchote à travers les fils : 'Ce clavier est une énigme. Mais la vraie énigme, c'est la machine à café. J'ai entendu dire que le code '0000' sur ce clavier pourrait révéler un indice... ou juste prouver que je suis le seul à utiliser le code par défaut. Un des avis clients ici parle d'un 'code maître', ça pourrait être un indice pour la page de connexion !'", "color: #fd7e14;");
+    </script>
+</body>
+
+</html>

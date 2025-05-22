@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caméra "Oeil de Taupe" 360 - SécuriPLUS+</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Optionnel: Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- CSS Personnalisé - Chemin corrigé -->
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        /* ... (vos styles spécifiques à la page produit restent ici) ... */
+        .product-image-gallery {}
+
+        .main-product-image {
+            border: 1px solid #ddd;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .thumbnail-images img {
+            border: 1px solid #eee;
+            padding: 5px;
+            margin: 5px;
+            cursor: pointer;
+            max-width: 80px;
+        }
+
+        .thumbnail-images img:hover {
+            border-color: #0d6efd;
+        }
+
+        .product-price .old-price {
+            text-decoration: line-through;
+            color: #6c757d;
+            font-size: 1.2rem;
+        }
+
+        .product-price .new-price {
+            color: #dc3545;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .product-discount-badge {
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding: 0.5em 0.8em;
+        }
+
+        .quantity-selector input {
+            width: 60px;
+            text-align: center;
+        }
+
+        .nav-tabs .nav-link.active {
+            background-color: #e9ecef;
+            border-bottom-color: #e9ecef;
+        }
+
+        .fake-review {
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .fake-review:last-child {
+            border-bottom: none;
+        }
+
+        .star-rating-product-page .bi-star-fill,
+        .star-rating-product-page .bi-star-half,
+        .star-rating-product-page .bi-star {
+            color: #ffc107;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Barre de Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top shadow-sm">
+        <div class="container">
+            <!-- Chemin corrigé -->
+            <a class="navbar-brand" href="../index.html">
+                <span class="logo-text">Sécuri<span class="logo-plus">PLUS+</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav" style="justify-content: flex-end;">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <!-- Chemin corrigé -->
+                        <a class="nav-link" href="../index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- Chemin corrigé -->
+                        <a class="nav-link" href="../index.html#categories">Nos Super Produits</a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- Chemin corrigé -->
+                        <a class="nav-link" href="../index.html#promos">Promos de Folie !</a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- Chemin corrigé -->
+                        <a class="nav-link" href="../blog.html">Le Blog (en pause technique depuis 2019)</a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- Chemin corrigé -->
+                        <a class="nav-link" href="../index.html#contact">Contactez-nous (on répondra... un jour)</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Barre Latérale Gauche - FAUSSES PUBLICITÉS -->
+            <aside class="col-lg-2 d-none d-lg-block fake-ad-sidebar">
+                <div class="fake-ad">
+                    <h5>Perdez 10kg en 3 jours SANS EFFORT!</h5>
+                    <!-- Chemin corrigé -->
+                    <img src="../img/pubMINCEUR.png" alt="Pub Minceur" class="gif-style">
+                    <p>(Résultats non garantis, peut causer des hallucinations de concombres)</p>
+                    <!-- Chemin corrigé -->
+                    <button class="btn-ad"><a href="../minceur.html">DÉCOUVREZ LE SECRET !!!</a></button>
+                </div>
+                <div class="fake-ad">
+                    <h5>Horoscope du jour:</h5>
+                    <!-- Chemin corrigé -->
+                    <img src="../img/pubHOROSCOPE.png" alt="Pub Horoscope" class="gif-style">
+                    <p>Vous allez cliquer sur une pub... probablement celle-ci ! Gagnez un porte-clé !</p>
+                    <!-- Chemin corrigé -->
+                    <button class="btn-ad"><a href="../horoscope.html">MON HOROSCOPE GRATUIT!</a></button>
+                </div>
+                <div class="fake-ad">
+                    <h5>MEILLEUR SITE DE SONNERIES POLYPHONIQUES 2005!</h5>
+                    <!-- Chemin corrigé -->
+                    <img src="../img/pubNOKIA.png" alt="Pub Sonneries" class="gif-style">
+                    <p>Revivez l'âge d'or du Nokia 3310! Crazy Frog inclus!</p>
+                    <!-- Chemin corrigé -->
+                    <button class="btn-ad"><a href="../sonneries.html">TÉLÉCHARGEZ VITE!</a></button>
+                </div>
+            </aside>
+
+            <!-- Contenu Principal de la Page Produit -->
+            <main class="col-lg-8 col-md-12 py-4">
+                <div class="container">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <!-- Chemin corrigé -->
+                            <li class="breadcrumb-item"><a href="../index.html">Accueil</a></li>
+                            <!-- Chemin corrigé -->
+                            <li class="breadcrumb-item"><a href="../index.html#categories">Caméras de Surveillance</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Caméra "Oeil de Taupe" 360</li>
+                        </ol>
+                    </nav>
+
+                    <div class="row">
+                        <!-- Colonne Image Produit -->
+                        <div class="col-lg-6">
+                            <div class="product-image-gallery text-center">
+                                <!-- Chemin corrigé -->
+                                <img src="../img/produit_phare.jpg" id="mainProductImage"
+                                    class="img-fluid mb-3 main-product-image" alt="Caméra Oeil de Taupe 360">
+                                <div class="thumbnail-images d-flex justify-content-center">
+                                    <!-- Chemin corrigé -->
+                                    <img src="../img/produit_phare.jpg" class="img-thumbnail" alt="Vue 1"
+                                        onclick="changeImage('../img/produit_phare.jpg')">
+                                    <!-- Chemin corrigé -->
+                                    <img src="../img/oeil_taupe_detail1.png" class="img-thumbnail"
+                                        alt="Vue 2 - Détail Zoom"
+                                        onclick="changeImage('../img/oeil_taupe_detail1.jpg')">
+                                    <!-- Chemin corrigé -->
+                                    <img src="../img/oeil_taupe_packaging.png" class="img-thumbnail"
+                                        alt="Vue 3 - Packaging"
+                                        onclick="changeImage('../img/oeil_taupe_packaging.png')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Colonne Détails Produit -->
+                        <div class="col-lg-6">
+                            <h1 class="mb-2">Caméra "Oeil de Taupe" 360</h1>
+                            <div class="d-flex align-items-center mb-2 star-rating-product-page">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                                <span class="ms-2 text-muted">(4.5 étoiles - basé sur 2 avis, celui de Kevin et de sa
+                                    maman)</span>
+                            </div>
+
+                            <div class="product-price mb-3">
+                                <span class="old-price me-2">199,99€</span>
+                                <span class="new-price">49,97€</span>
+                                <span class="badge bg-danger product-discount-badge ms-2">ÉCONOMISEZ 75% (Ouais,
+                                    carrément!)</span>
+                            </div>
+
+                            <p class="text-success fw-bold"><i class="bi bi-check-circle-fill"></i> En stock (enfin, on
+                                croit... Kevin doit vérifier derrière l'armoire)</p>
+
+                            <p class="lead product-short-description">
+                                La révolution de la surveillance discrète (ou pas) ! Voyez à 360°... si vous tournez la
+                                tête en même temps. Parfait pour savoir qui vole vos stylos au bureau ou si le chat
+                                prépare un complot mondial.
+                            </p>
+
+                            <div class="mb-3">
+                                <label for="quantity" class="form-label">Quantité (max 1 par client, on ne voudrait pas
+                                    vider notre stock colossal) :</label>
+                                <div class="input-group quantity-selector" style="width: 150px;">
+                                    <button class="btn btn-outline-secondary" type="button"
+                                        onclick="changeQuantity(-1)">-</button>
+                                    <input type="text" class="form-control text-center" value="1" id="quantity"
+                                        readonly>
+                                    <button class="btn btn-outline-secondary" type="button"
+                                        onclick="changeQuantity(1)">+</button>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-warning btn-lg w-100 mb-3 shadow">
+                                <i class="bi bi-cart-plus-fill"></i> AJOUTER AU PANIER (ET PRIER POUR QUE ÇA MARCHE)
+                            </button>
+
+                            <div class="accordion" id="productDetailsAccordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingFeatures">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseFeatures"
+                                            aria-expanded="false" aria-controls="collapseFeatures">
+                                            Caractéristiques Techniques (Impressionnantes, non ?)
+                                        </button>
+                                    </h2>
+                                    <div id="collapseFeatures" class="accordion-collapse collapse"
+                                        aria-labelledby="headingFeatures" data-bs-parent="#productDetailsAccordion">
+                                        <div class="accordion-body">
+                                            <ul>
+                                                <li><strong>Vision :</strong> 360° (si vous la faites tourner sur
+                                                    elle-même très vite). Sinon, plutôt 45°.</li>
+                                                <li><strong>Résolution :</strong> "Haute Définition" (selon les
+                                                    standards de 1998). Attendez-vous à des pixels gros comme le poing.
+                                                </li>
+                                                <li><strong>Vision Nocturne :</strong> Oui (si vous allumez la lumière
+                                                    de la pièce). Sinon, c'est très... artistique (noir sur noir).</li>
+                                                <li><strong>Intelligence Artificielle :</strong> Notre IA "TaupeTech™"
+                                                    est capable de reconnaître un chat... parfois. Ou un grille-pain.
+                                                    Elle est en apprentissage.</li>
+                                                <li><strong>Connectivité :</strong> Wi-Fi (si le vent est bien orienté
+                                                    et que les planètes sont alignées). Câble Ethernet (fourni, 5cm de
+                                                    long).</li>
+                                                <li><strong>Matériau :</strong> Plastique "Premium" (ressemble
+                                                    étrangement à celui des jouets pour enfants).</li>
+                                                <li><strong>Batterie :</strong> Tient facilement 30 minutes (avec des
+                                                    piles neuves, non incluses, évidemment).</li>
+                                                <li><strong>Manuel d'utilisation :</strong> En 17 langues (dont le
+                                                    Klingon et le langage des signes pour taupes), écrit par Kevin
+                                                    pendant une insomnie.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingShipping">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseShipping"
+                                            aria-expanded="false" aria-controls="collapseShipping">
+                                            Livraison & Retours (Une Aventure en Soi)
+                                        </button>
+                                    </h2>
+                                    <div id="collapseShipping" class="accordion-collapse collapse"
+                                        aria-labelledby="headingShipping" data-bs-parent="#productDetailsAccordion">
+                                        <div class="accordion-body">
+                                            <p><strong>Livraison :</strong> Expédiée sous 3 à 45 jours ouvrés (ça dépend
+                                                si Kevin trouve du scotch). Emballage discret (une vieille boîte à
+                                                chaussures, pour l'effet de surprise).</p>
+                                            <p><strong>Retours :</strong> Acceptés si le produit est encore dans son
+                                                emballage d'origine, non ouvert, et si vous nous envoyez une lettre de
+                                                motivation de 5 pages expliquant pourquoi vous n'aimez pas la
+                                                perfection. Les frais de retour sont à votre charge (et incluent un don
+                                                pour la caisse à café de Kevin).</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5">
+                        <ul class="nav nav-tabs" id="productTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="description-tab" data-bs-toggle="tab"
+                                    data-bs-target="#description" type="button" role="tab" aria-controls="description"
+                                    aria-selected="true">Description Détaillée (Parce qu'on est Pro)</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews"
+                                    type="button" role="tab" aria-controls="reviews" aria-selected="false">Avis de nos
+                                    Clients (100% Authentiques... ou presque)</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content pt-3" id="productTabContent">
+                            <div class="tab-pane fade show active" id="description" role="tabpanel"
+                                aria-labelledby="description-tab">
+                                <h4>L'"Oeil de Taupe" 360 : Plus qu'une caméra, une expérience !</h4>
+                                <p>Fatigué des angles morts ? Des mystères non résolus dans votre propre maison ? La
+                                    caméra "Oeil de Taupe" 360 est LA solution (ou du moins, une tentative de solution).
+                                    Conçue par nos meilleurs ingénieurs (Kevin, après avoir regardé 3 tutos YouTube),
+                                    cette merveille technologique vous offre une vision panoramique... si vous avez
+                                    beaucoup d'imagination.</p>
+                                <p>Son design "avant-gardiste" (inspiré d'une boule de bowling et d'un grille-pain)
+                                    s'intégrera parfaitement à tout type de décoration (surtout si votre décoration est
+                                    déjà un peu bizarre). L'installation est un jeu d'enfant (si votre enfant est un
+                                    génie en informatique et en bricolage). Branchez-la, priez les dieux de la
+                                    technologie, et laissez la magie (ou la frustration) opérer.</p>
+                                <p><strong>Points forts (selon notre service marketing, qui est aussi Kevin) :</strong>
+                                </p>
+                                <ul>
+                                    <li>Fait un excellent presse-papier design.</li>
+                                    <li>Peut servir de sujet de conversation (généralement pour se plaindre).</li>
+                                    <li>Le clignotement aléatoire de ses LED peut créer une ambiance disco improvisée.
+                                    </li>
+                                    <li>Impressionne les cambrioleurs amateurs (ils penseront que vous avez un vrai
+                                        système de sécurité... pendant 5 minutes).</li>
+                                </ul>
+                                <p class="text-danger fw-bold">Attention : Ne pas utiliser comme frisbee. Ne pas
+                                    immerger dans le café (même si c'est tentant). SécuriPLUS+ n'est pas responsable des
+                                    crises de rire ou de larmes provoquées par ce produit.</p>
+                            </div>
+                            <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                                <h5>Ce que nos clients (triés sur le volet) en pensent :</h5>
+                                <div class="fake-review mt-3">
+                                    <div class="star-rating-product-page mb-1">
+                                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star-fill"></i> (5/5)
+                                    </div>
+                                    <p><strong>"Incroyable !"</strong> - Par K. Stagiaire, le 15 Mars 2024</p>
+                                    <p>"Cette caméra est la meilleure que j'aie jamais... aidé à concevoir. Elle
+                                        fonctionne... la plupart du temps. Le chef a dit que je devais mettre 5 étoiles.
+                                        Alors voilà. Achetez-la, s'il vous plaît, j'ai besoin de cet argent pour du vrai
+                                        café."</p>
+                                </div>
+                                <div class="fake-review">
+                                    <div class="star-rating-product-page mb-1">
+                                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star-half"></i> (4.5/5)
+                                    </div>
+                                    <p><strong>"Presque parfaite pour surveiller mon hamster."</strong> - Par
+                                        MamanDeKevin, le 16 Mars 2024</p>
+                                    <p>"Mon fils m'a offert cette caméra. Elle est très... originale. J'ai pu voir mon
+                                        hamster tourner dans sa roue. L'image était un peu floue, comme un tableau
+                                        impressionniste, c'est artistique. Et le son ressemble à un appel de dauphin,
+                                        c'est apaisant. Kevin est un si bon garçon."</p>
+                                </div>
+                                <div class="fake-review">
+                                    <div class="star-rating-product-page mb-1">
+                                        <i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i
+                                            class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>
+                                        (1/5... oups, 5/5 je voulais dire !)
+                                    </div>
+                                    <p><strong>"Une expérience... unique."</strong> - Par ClientMystere77 (qui n'est PAS
+                                        le CEO), le 17 Mars 2024</p>
+                                    <p>"J'ai acheté cette caméra pour surveiller mon précieux bonsaï. Elle a enregistré
+                                        3 heures de mon mur. En accéléré, c'est presque hypnotique. Le service client
+                                        (un certain Kevin) a été très... patient. Je recommande... si vous aimez les
+                                        surprises. (Le chef m'a dit de corriger ma note, c'est un produit 5 étoiles,
+                                        évidemment !)"</p>
+                                    <p class="small text-muted mt-2"
+                                        style="font-family: 'Courier New', monospace; font-size: 0.7rem; opacity: 0.5;">
+                                        <!-- PS: K. a laissé une note dans le code source de cette section d'avis. Il parle d'un "manuel" et d'une "machine infernale". -->
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Barre Latérale Droite - FAUSSES PUBLICITÉS -->
+            <aside class="col-lg-2 d-none d-lg-block fake-ad-sidebar">
+                <div class="fake-ad">
+                    <h5>DEVENEZ MILLIONNAIRE GRÂCE AUX CHAUSSETTES !</h5>
+                    <!-- Chemin corrigé -->
+                    <img src="../img/pubGETRICH.png" alt="Pub Chaussettes" class="gif-style">
+                    <p>(Formation exclusive pour seulement 999,99€! Chaussettes non incluses)</p>
+                    <!-- Chemin corrigé -->
+                    <button class="btn-ad"><a href="../getrich.html">JE VEUX ÊTRE RICHE !!!</a></button>
+                </div>
+                <div class="fake-ad">
+                    <h5>LES EXTRATERRESTRES SONT PARMI NOUS !</h5>
+                    <!-- Chemin corrigé -->
+                    <img src="../img/pubEXTRA.png" alt="Pub Extraterrestres" class="gif-style">
+                    <p>Achetez notre détecteur d'aliens (fonctionne aussi sur les beaux-parents).</p>
+                    <!-- Chemin corrigé -->
+                    <button class="btn-ad"><a href="../protect.html">PROTÉGEZ-VOUS MAINTENANT!</a></button>
+                </div>
+                <div class="fake-ad">
+                    <h5>Gagnez un voyage sur MARS!</h5>
+                    <!-- Chemin corrigé -->
+                    <img src="../img/pubMARSTRIP.png" alt="Pub Mars" class="gif-style">
+                    <p>(Aller simple. Remplissez 75 formulaires et envoyez une mèche de cheveux.)</p>
+                    <!-- Chemin corrigé -->
+                    <button class="btn-ad"><a href="../mars.html">JE M'INSCRIS (AU SECOURS)!</a></button>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Pied de Page -->
+    <footer id="contact" class="footer-custom text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5>SécuriPLUS+</h5>
+                    <p>Votre tranquillité, notre préoccupation (presque) principale !<br>On fait de notre mieux, promis.
+                    </p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Liens (plus ou moins) Utiles</h5>
+                    <ul class="list-unstyled">
+                        <!-- Chemins corrigés -->
+                        <li><a href="../qui_sommes_nous.html">Qui sommes-nous (mystère...)</a></li>
+                        <li><a href="../blog.html">Notre Blog (toujours en pause)</a></li>
+                        <li><a href="../mention.html">Mentions Légales (bientôt disponible... depuis 2020)</a></li>
+                        <li><a href="../faq.html">FAQ (lisez-la VRAIMENT)</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Contactez-nous (si vous insistez)</h5>
+                    <p>Email: contact.securiplus@email-gratuit.com <br> (Réponse sous 3 à 15 jours ouvrés... ou jamais)
+                    </p>
+                    <div class="social-icons mt-2">
+                        <a href="#" title="Notre page Facebook (inexistante)"><i class="bi bi-facebook"></i></a>
+                        <a href="#" title="Notre Twitter (un compte par défaut)"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" title="Notre Instagram (photos de chats uniquement)"><i
+                                class="bi bi-instagram"></i></a>
+                        <a href="#" title="Notre LinkedIn (profil du stagiaire)"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright-line">
+                <p>© 2015 - <span id="currentYear"></span> SécuriPLUS+ Technologies Internationales (et du
+                    Terroir).<br>Tous droits (plus ou moins) réservés. Site fièrement réalisé avec du café, de l'espoir
+                    et quelques tutos YouTube.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        function changeImage(newImageSrc) {
+            // Le chemin de newImageSrc est déjà correct car il vient de l'attribut onclick
+            document.getElementById('mainProductImage').src = newImageSrc;
+        }
+
+        function changeQuantity(amount) {
+            let quantityInput = document.getElementById('quantity');
+            let currentValue = parseInt(quantityInput.value);
+            let newValue = currentValue + amount;
+            if (newValue < 1) newValue = 1;
+            if (newValue > 1) {
+                alert("Désolé, un seul exemplaire de cette merveille par client ! On ne voudrait pas créer une émeute.");
+                newValue = 1;
+            }
+            quantityInput.value = newValue;
+        }
+
+        console.log("%cPage Produit 'Oeil de Taupe' - Debug Mode (Activé par Kevin)", "background: #222; color: #bada55; font-size: 14px;");
+        console.log("%cKevin dit : 'Cette caméra est un mystère, même pour moi. Mais les vrais mystères sont parfois dans les avis des clients... ou dans les commentaires du code source de ces avis. J'ai entendu parler d'un manuel pour une machine encore plus infernale que cette caméra.'", "color: #ff8c00;");
+    </script>
+</body>
+
+</html>

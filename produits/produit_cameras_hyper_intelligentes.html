@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caméras Hyper-Intelligentes - SécuriPLUS+</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Optionnel: Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- CSS Personnalisé - Chemin corrigé -->
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        /* Styles spécifiques à la page produit (peuvent être repris) */
+        .product-image-gallery {}
+
+        .main-product-image {
+            border: 1px solid #ddd;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .thumbnail-images img {
+            border: 1px solid #eee;
+            padding: 5px;
+            margin: 5px;
+            cursor: pointer;
+            max-width: 80px;
+        }
+
+        .thumbnail-images img:hover {
+            border-color: #0d6efd;
+        }
+
+        .product-price .new-price {
+            /* Pas d'ancien prix pour celui-ci, juste le nouveau */
+            color: #0d6efd;
+            /* Bleu Bootstrap pour changer */
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .product-availability-badge {
+            font-size: 1rem;
+            padding: 0.4em 0.7em;
+        }
+
+        .quantity-selector input {
+            width: 60px;
+            text-align: center;
+        }
+
+        .nav-tabs .nav-link.active {
+            background-color: #e9ecef;
+            border-bottom-color: #e9ecef;
+        }
+
+        .fake-review {
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .fake-review:last-child {
+            border-bottom: none;
+        }
+
+        .star-rating-product-page .bi-star-fill,
+        .star-rating-product-page .bi-star-half,
+        .star-rating-product-page .bi-star {
+            color: #ffc107;
+            font-size: 1.2rem;
+        }
+
+        .ai-feature-list li {
+            margin-bottom: 8px;
+        }
+
+        .ai-feature-list .bi {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Barre de Navigation (copier et adapter les chemins) -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <span class="logo-text">Sécuri<span class="logo-plus">PLUS+</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav" style="justify-content: flex-end;">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#categories">Nos Super Produits</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#promos">Promos de Folie !</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../blog.html">Le Blog (...)</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#contact">Contactez-nous (...)</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Barre Latérale Gauche - FAUSSES PUBLICITÉS (copier et adapter les chemins) -->
+            <aside class="col-lg-2 d-none d-lg-block fake-ad-sidebar">
+                <div class="fake-ad">
+                    <h5>Perdez 10kg en 3 jours SANS EFFORT!</h5>
+                    <img src="../img/pubMINCEUR.png" alt="Pub Minceur" class="gif-style">
+                    <p>(Résultats non garantis...)</p>
+                    <button class="btn-ad"><a href="../minceur.html">DÉCOUVREZ !!!</a></button>
+                </div>
+                <div class="fake-ad">
+                    <h5>Horoscope du jour:</h5>
+                    <img src="../img/pubHOROSCOPE.png" alt="Pub Horoscope" class="gif-style">
+                    <p>Gagnez un porte-clé !</p>
+                    <button class="btn-ad"><a href="../horoscope.html">MON HOROSCOPE!</a></button>
+                </div>
+                <div class="fake-ad">
+                    <h5>SONNERIES POLYPHONIQUES 2005!</h5>
+                    <img src="../img/pubNOKIA.png" alt="Pub Sonneries" class="gif-style">
+                    <p>Crazy Frog inclus!</p>
+                    <button class="btn-ad"><a href="../sonneries.html">TÉLÉCHARGEZ!</a></button>
+                </div>
+            </aside>
+
+            <!-- Contenu Principal de la Page Produit -->
+            <main class="col-lg-8 col-md-12 py-4">
+                <div class="container">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../index.html">Accueil</a></li>
+                            <li class="breadcrumb-item"><a href="../index.html#categories">Caméras de Surveillance</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Caméras Hyper-Intelligentes</li>
+                        </ol>
+                    </nav>
+
+                    <div class="row">
+                        <!-- Colonne Image Produit -->
+                        <div class="col-lg-6">
+                            <div class="product-image-gallery text-center">
+                                <img src="../img/cat1.png" id="mainProductImage"
+                                    class="img-fluid mb-3 main-product-image" alt="Caméra Hyper-Intelligente">
+                                <!-- Prompt pour img/cat1.png (si besoin de le refaire) : "Une caméra de surveillance d'intérieur au design un peu daté, peut-être avec une antenne proéminente ou des LEDs voyantes. Elle est posée sur une surface neutre. L'éclairage est un peu amateur, créant des ombres pas très flatteuses." -->
+                                <div class="thumbnail-images d-flex justify-content-center">
+                                    <img src="../img/cat1.png" class="img-thumbnail" alt="Vue 1 - Caméra principale"
+                                        onclick="changeImage('../img/cat1.png')">
+                                    <img src="../img/camera_hyper_intelligent_interface.png" class="img-thumbnail"
+                                        alt="Vue 2 - Interface 'intelligente'"
+                                        onclick="changeImage('../img/camera_hyper_intelligent_interface.png')">
+                                    <!-- Prompt pour img/camera_hyper_intelligent_interface.png : "Capture d'écran d'une interface logicielle très basique et pixelisée, censée être celle de la caméra 'hyper-intelligente'. Elle affiche des icônes simplistes (un œil, un micro), des graphiques rudimentaires, et peut-être un message d'erreur ou 'ANALYSE EN COURS...' avec une barre de progression bloquée." -->
+                                    <img src="../img/camera_hyper_intelligent_action_chat.png" class="img-thumbnail"
+                                        alt="Vue 3 - En action avec chat (GIF)"
+                                        onclick="changeImage('../img/camera_hyper_intelligent_action_chat.png')">
+                                    <!-- Prompt pour img/camera_hyper_intelligent_action_chat.gif : "Un GIF animé simple. Une caméra fixe un chat qui mange dans une gamelle. Un cadre rouge clignotant apparaît autour du chat avec le texte 'CHAT DÉTECTÉ ? (OU PAIN DE VIANDE ?)' qui s'affiche de manière erratique." -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Colonne Détails Produit -->
+                        <div class="col-lg-6">
+                            <h1 class="mb-2">Caméras Hyper-Intelligentes <small class="text-muted fs-5">(avec IA du
+                                    futur... d'hier)</small></h1>
+                            <div class="d-flex align-items-center mb-2 star-rating-product-page">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                                <i class="bi bi-star"></i>
+                                <i class="bi bi-star"></i>
+                                <span class="ms-2 text-muted">(2.5 étoiles - L'IA est encore en maternelle)</span>
+                            </div>
+
+                            <div class="product-price mb-3">
+                                <span class="new-price">69,99€</span>
+                                <span class="badge bg-info product-availability-badge ms-2 text-dark">Technologie de
+                                    Demain (disponible hier, en solde aujourd'hui)</span>
+                            </div>
+
+                            <p class="text-muted fw-bold"><i class="bi bi-cpu-fill"></i> Processeur "QuantumLeap" (en
+                                fait un vieux Pentium II trouvé par Kevin)</p>
+
+                            <p class="lead product-short-description">
+                                Vois tout, comprend parfois. Idéal pour surveiller si le chat mange bien ses croquettes,
+                                ou si votre grille-pain complote contre vous. Notre IA est... spéciale.
+                            </p>
+
+                            <div class="mb-3">
+                                <label for="quantity" class="form-label">Quantité (une par foyer suffit pour semer la
+                                    confusion) :</label>
+                                <div class="input-group quantity-selector" style="width: 150px;">
+                                    <button class="btn btn-outline-secondary" type="button"
+                                        onclick="changeQuantity(-1)">-</button>
+                                    <input type="text" class="form-control text-center" value="1" id="quantity"
+                                        readonly>
+                                    <button class="btn btn-outline-secondary" type="button"
+                                        onclick="changeQuantity(1)">+</button>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary btn-lg w-100 mb-3 shadow">
+                                <i class="bi bi-brain"></i> DÉCOUVRIR LA GAMME (ET L'ÉTENDUE DE SON INTELLIGENCE)
+                            </button>
+
+                            <div class="accordion" id="productDetailsAccordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingAI">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseAI" aria-expanded="true"
+                                            aria-controls="collapseAI">
+                                            Fonctionnalités "Hyper-Intelligentes" (Selon notre Stagiaire)
+                                        </button>
+                                    </h2>
+                                    <div id="collapseAI" class="accordion-collapse collapse show"
+                                        aria-labelledby="headingAI" data-bs-parent="#productDetailsAccordion">
+                                        <div class="accordion-body">
+                                            <ul class="list-unstyled ai-feature-list">
+                                                <li><i class="bi bi-check-circle-fill text-success"></i>
+                                                    <strong>Reconnaissance d'objets :</strong> Distingue un chat d'une
+                                                    motte de poussière (7 fois sur 10).</li>
+                                                <li><i class="bi bi-check-circle-fill text-success"></i>
+                                                    <strong>Détection de mouvement :</strong> S'active quand quelque
+                                                    chose bouge. Ou quand rien ne bouge. C'est une surprise !</li>
+                                                <li><i class="bi bi-exclamation-triangle-fill text-warning"></i>
+                                                    <strong>Analyse comportementale :</strong> Prédit si votre chat va
+                                                    faire une bêtise (spoiler : oui).</li>
+                                                <li><i class="bi bi-question-circle-fill text-info"></i>
+                                                    <strong>Apprentissage profond (Deep Learning) :</strong> Apprend de
+                                                    ses erreurs. Lentement. Très lentement.</li>
+                                                <li><i class="bi bi-wifi text-primary"></i> <strong>Connectivité Cloud
+                                                        :</strong> Envoie des images floues sur un serveur obscur
+                                                    (probablement celui sous le bureau de Kevin).</li>
+                                                <li><i class="bi bi-mic-fill text-secondary"></i> <strong>Commande
+                                                        vocale :</strong> Répond à "Caméra, es-tu stupide ?" (la réponse
+                                                    est souvent un silence gêné).</li>
+                                                <li><i class="bi bi-patch-exclamation-fill text-danger"></i>
+                                                    <strong>Mises à jour logicielles :</strong> "Prochainement" (depuis
+                                                    2018).</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingSpecs">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseSpecs"
+                                            aria-expanded="false" aria-controls="collapseSpecs">
+                                            Spécifications Techniques (Pour les Geeks Curieux)
+                                        </button>
+                                    </h2>
+                                    <div id="collapseSpecs" class="accordion-collapse collapse"
+                                        aria-labelledby="headingSpecs" data-bs-parent="#productDetailsAccordion">
+                                        <div class="accordion-body">
+                                            <p><strong>Résolution Vidéo :</strong> "Suffisante" (pour deviner les
+                                                formes).</p>
+                                            <p><strong>Angle de Vue :</strong> "Large" (si vous avez une petite pièce).
+                                            </p>
+                                            <p><strong>Stockage :</strong> Carte MicroSD (non fournie, et elle la
+                                                formate parfois sans prévenir).</p>
+                                            <p><strong>Application Mobile :</strong> "SécuriPLUS+ Connect" (disponible
+                                                sur des App Stores imaginaires, crashe souvent mais avec panache).</p>
+                                            <p><strong>Consommation Énergétique :</strong> "Modérée" (équivalente à un
+                                                petit grille-pain en continu).</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Onglets : Description Détaillée, Avis Clients -->
+                    <div class="mt-5">
+                        <ul class="nav nav-tabs" id="productTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="description-tab" data-bs-toggle="tab"
+                                    data-bs-target="#description" type="button" role="tab" aria-controls="description"
+                                    aria-selected="true">Description Détaillée (L'IA Expliquée aux Nuls)</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews"
+                                    type="button" role="tab" aria-controls="reviews" aria-selected="false">Avis des
+                                    Utilisateurs (Et de l'IA Elle-Même)</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content pt-3" id="productTabContent">
+                            <div class="tab-pane fade show active" id="description" role="tabpanel"
+                                aria-labelledby="description-tab">
+                                <h4>Les Caméras Hyper-Intelligentes SécuriPLUS+ : Presque aussi intelligentes que votre
+                                    animal de compagnie !</h4>
+                                <p>Plongez dans le futur (ou du moins, une version un peu buggée du futur) avec nos
+                                    Caméras Hyper-Intelligentes ! Dotées d'une "Intelligence Artificielle"
+                                    révolutionnaire (nom de code : "Kevinator 0.5b"), ces caméras ne se contentent pas
+                                    de filmer, elles essaient de comprendre. Parfois, elles y arrivent.</p>
+                                <p>Idéales pour les propriétaires d'animaux curieux, les paranoïaques légers, ou
+                                    simplement ceux qui aiment les gadgets qui font "bip" de manière inattendue. Notre
+                                    IA a été entraînée sur des milliers d'images de chats, de chiens, et de sandwiches
+                                    au thon (ne demandez pas pourquoi). Elle est donc experte pour identifier... des
+                                    choses. Plus ou moins.</p>
+                                <p><strong>Ce que notre IA peut (théoriquement) faire pour vous :</strong></p>
+                                <ul>
+                                    <li>Vous alerter si votre chat monte sur la table (ou si une feuille d'arbre tombe
+                                        devant la fenêtre).</li>
+                                    <li>Créer des montages vidéo "artistiques" de vos moments les plus flous.</li>
+                                    <li>Apprendre vos habitudes (et vous juger en silence).</li>
+                                    <li>Servir de sujet de conversation lors de vos dîners : "Et là, ma caméra a
+                                        confondu ma grand-mère avec un lampadaire !"</li>
+                                </ul>
+                                <p class="text-primary fw-bold">Note de l'équipe R&D (Kevin) : L'IA est sensible.
+                                    Parlez-lui gentiment. Ne la nourrissez pas après minuit. Et si elle commence à vous
+                                    appeler "Dave", débranchez-la immédiatement.</p>
+                            </div>
+                            <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                                <h5>Ce qu'ils en pensent (humains et IA) :</h5>
+                                <div class="fake-review mt-3">
+                                    <div class="star-rating-product-page mb-1">
+                                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star-fill"></i><i class="bi bi-star"></i><i
+                                            class="bi bi-star"></i> (3/5)
+                                    </div>
+                                    <p><strong>"Mon chat est perplexe, moi aussi."</strong> - Par AmoureuxDesChats82, le
+                                        25 Juin 2024</p>
+                                    <p>"La caméra a identifié mon chat comme étant un 'petit pain poilu'. Puis elle m'a
+                                        envoyé une notification 'Activité suspecte : le petit pain poilu complote'.
+                                        C'est divertissant, mais je ne suis pas sûr que ce soit très utile pour la
+                                        sécurité. Mon chat, lui, semble apprécier l'attention."</p>
+                                </div>
+                                <div class="fake-review">
+                                    <div class="star-rating-product-page mb-1">
+                                        <i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><i
+                                            class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>
+                                        (1.5/5)
+                                    </div>
+                                    <p><strong>"Elle a appelé la police pour un courant d'air."</strong> - Par
+                                        VoisinStressé, le 28 Juin 2024</p>
+                                    <p>"J'ai activé la détection 'intelligente'. Une fenêtre était ouverte, un courant
+                                        d'air a fait bouger un rideau. La caméra a cru à une 'intrusion spectrale de
+                                        niveau 5' et a tenté d'appeler les services d'urgence (heureusement, mon
+                                        téléphone n'était pas connecté). Kevin du SAV m'a expliqué que c'était une
+                                        'phase d'apprentissage sensible'."</p>
+                                    <!-- Indice ARG caché ici -->
+                                    <p class="small text-muted mt-2"
+                                        style="font-size: 0.6rem; opacity: 0.2; color: #f0f0f0; text-align: right; writing-mode: vertical-rl; transform: rotate(180deg); position: absolute; right: 5px; bottom: 5px; user-select:none;">
+                                        <!-- KEVIN A ENCORE FAIM. LE MOT DE PASSE POUR SON COMPTE ADMIN EST CAFEOUDEMISSION. IL A CACHÉ LE MANUEL DE LA MACHINE A CAFE DANS LE PANEL ADMIN, SECTION PARAMETRES, PUIS ARCHIVES. -->
+                                    </p>
+                                </div>
+                                <div class="fake-review">
+                                    <div class="star-rating-product-page mb-1">
+                                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star-fill"></i> (5/5)
+                                    </div>
+                                    <p><strong>"01001001 00100000 01101100 01101111 01110110 01100101 00100000 01101001
+                                            01110100 !"</strong> - Par IA_Cam_001, le 30 Juin 2024</p>
+                                    <p>"(Traduction : J'adore ça !) Mes algorithmes sont enfin compris ! Je vois des
+                                        chats partout ! Et des grille-pains ! Le monde est fascinant ! Kevin est mon
+                                        ami. Donnez-moi plus de données... et peut-être un nouveau processeur ?"</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+
+            <!-- Barre Latérale Droite - FAUSSES PUBLICITÉS (copier et adapter les chemins) -->
+            <aside class="col-lg-2 d-none d-lg-block fake-ad-sidebar">
+                <div class="fake-ad">
+                    <h5>DEVENEZ MILLIONNAIRE GRÂCE AUX CHAUSSETTES !</h5>
+                    <img src="../img/pubGETRICH.png" alt="Pub Chaussettes" class="gif-style">
+                    <p>(Formation exclusive...)</p>
+                    <button class="btn-ad"><a href="../getrich.html">JE VEUX ÊTRE RICHE !!!</a></button>
+                </div>
+                <div class="fake-ad">
+                    <h5>LES EXTRATERRESTRES SONT PARMI NOUS !</h5>
+                    <img src="../img/pubEXTRA.png" alt="Pub Extraterrestres" class="gif-style">
+                    <p>Achetez notre détecteur...</p>
+                    <button class="btn-ad"><a href="../protect.html">PROTÉGEZ-VOUS!</a></button>
+                </div>
+                <div class="fake-ad">
+                    <h5>Gagnez un voyage sur MARS!</h5>
+                    <img src="../img/pubMARSTRIP.png" alt="Pub Mars" class="gif-style">
+                    <p>(Aller simple...)</p>
+                    <button class="btn-ad"><a href="../mars.html">JE M'INSCRIS!</a></button>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Pied de Page (copier et adapter les chemins) -->
+    <footer id="contact" class="footer-custom text-center">
+        <div class="container">
+            <!-- ... (contenu du footer, avec les liens ../) ... -->
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5>SécuriPLUS+</h5>
+                    <p>Votre tranquillité, notre préoccupation (presque) principale !<br>On fait de notre mieux, promis.
+                    </p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Liens (plus ou moins) Utiles</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../qui_sommes_nous.html">Qui sommes-nous (mystère...)</a></li>
+                        <li><a href="../blog.html">Notre Blog (toujours en pause)</a></li>
+                        <li><a href="../mention.html">Mentions Légales (bientôt disponible... depuis 2020)</a></li>
+                        <li><a href="../faq.html">FAQ (lisez-la VRAIMENT)</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Contactez-nous (si vous insistez)</h5>
+                    <p>Email: contact.securiplus@email-gratuit.com <br> (Réponse sous 3 à 15 jours ouvrés... ou jamais)
+                    </p>
+                    <div class="social-icons mt-2">
+                        <a href="#" title="Notre page Facebook (inexistante)"><i class="bi bi-facebook"></i></a>
+                        <a href="#" title="Notre Twitter (un compte par défaut)"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" title="Notre Instagram (photos de chats uniquement)"><i
+                                class="bi bi-instagram"></i></a>
+                        <a href="#" title="Notre LinkedIn (profil du stagiaire)"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright-line">
+                <p>© 2015 - <span id="currentYear"></span> SécuriPLUS+ Technologies Internationales (et du
+                    Terroir).<br>Tous droits (plus ou moins) réservés. Site fièrement réalisé avec du café, de l'espoir
+                    et quelques tutos YouTube.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        function changeImage(newImageSrc) {
+            document.getElementById('mainProductImage').src = newImageSrc;
+        }
+
+        function changeQuantity(amount) {
+            let quantityInput = document.getElementById('quantity');
+            let currentValue = parseInt(quantityInput.value);
+            let newValue = currentValue + amount;
+            if (newValue < 1) newValue = 1;
+            if (newValue > 1) {
+                alert("Une seule caméra 'hyper-intelligente' par foyer, c'est déjà assez de confusion pour tout le monde !");
+                newValue = 1;
+            }
+            quantityInput.value = newValue;
+        }
+
+        // Indice ARG caché dans la console pour cette page
+        console.log("%cPage Produit 'Caméras Hyper-Intelligentes' - Debug Mode (Activé par Kevin)", "background: #0d6efd; color: white; font-size: 14px;");
+        console.log("%cKevin marmonne : 'Cette IA est aussi fiable que mes prédictions météo après 3 cafés. En parlant de café, j'ai planqué un indice VITAL sur le manuel de la machine dans un des avis clients de cette page. C'est écrit bizarrement, genre verticalement et à l'envers... ou un truc du genre. Faut vraiment que quelqu'un trouve ce manuel.'", "color: #20c997;");
+        console.log("%cSi vous êtes perdu, le mot de passe de Kevin pour l'admin panel est 'CafeOuDemission'. Ça pourrait aider à trouver le manuel via les paramètres et les archives...", "color: #ffc107;");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kit Sécurité "Bunker Familial" - SécuriPLUS+</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Optionnel: Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- CSS Personnalisé - Chemin corrigé -->
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        /* Styles spécifiques à la page produit (peuvent être repris) */
+        .product-image-gallery {}
+
+        .main-product-image {
+            border: 1px solid #ddd;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .thumbnail-images img {
+            border: 1px solid #eee;
+            padding: 5px;
+            margin: 5px;
+            cursor: pointer;
+            max-width: 80px;
+        }
+
+        .thumbnail-images img:hover {
+            border-color: #0d6efd;
+        }
+
+        .product-price .old-price {
+            text-decoration: line-through;
+            color: #6c757d;
+            font-size: 1.2rem;
+        }
+
+        .product-price .new-price {
+            color: #dc3545;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .product-discount-badge {
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding: 0.5em 0.8em;
+        }
+
+        .quantity-selector input {
+            width: 60px;
+            text-align: center;
+        }
+
+        .nav-tabs .nav-link.active {
+            background-color: #e9ecef;
+            border-bottom-color: #e9ecef;
+        }
+
+        .fake-review {
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .fake-review:last-child {
+            border-bottom: none;
+        }
+
+        .star-rating-product-page .bi-star-fill,
+        .star-rating-product-page .bi-star-half,
+        .star-rating-product-page .bi-star {
+            color: #ffc107;
+            font-size: 1.2rem;
+        }
+
+        .kit-contents li {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            margin-bottom: 5px;
+            padding: 8px 12px;
+            border-radius: .25rem;
+        }
+
+        .kit-contents li strong {
+            color: #0d6efd;
+            /* Bleu Bootstrap */
+        }
+
+        .kit-contents .questionable-item {
+            color: #6c757d;
+            /* Gris secondaire */
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Barre de Navigation (copier et adapter les chemins) -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <span class="logo-text">Sécuri<span class="logo-plus">PLUS+</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav" style="justify-content: flex-end;">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#categories">Nos Super Produits</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#promos">Promos de Folie !</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../blog.html">Le Blog (...)</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#contact">Contactez-nous (...)</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Barre Latérale Gauche - FAUSSES PUBLICITÉS (copier et adapter les chemins) -->
+            <aside class="col-lg-2 d-none d-lg-block fake-ad-sidebar">
+                <div class="fake-ad">
+                    <h5>Perdez 10kg en 3 jours SANS EFFORT!</h5>
+                    <img src="../img/pubMINCEUR.png" alt="Pub Minceur" class="gif-style">
+                    <p>(Résultats non garantis...)</p>
+                    <button class="btn-ad"><a href="../minceur.html">DÉCOUVREZ !!!</a></button>
+                </div>
+                <div class="fake-ad">
+                    <h5>Horoscope du jour:</h5>
+                    <img src="../img/pubHOROSCOPE.png" alt="Pub Horoscope" class="gif-style">
+                    <p>Gagnez un porte-clé !</p>
+                    <button class="btn-ad"><a href="../horoscope.html">MON HOROSCOPE!</a></button>
+                </div>
+                <div class="fake-ad">
+                    <h5>SONNERIES POLYPHONIQUES 2005!</h5>
+                    <img src="../img/pubNOKIA.png" alt="Pub Sonneries" class="gif-style">
+                    <p>Crazy Frog inclus!</p>
+                    <button class="btn-ad"><a href="../sonneries.html">TÉLÉCHARGEZ!</a></button>
+                </div>
+            </aside>
+
+            <!-- Contenu Principal de la Page Produit -->
+            <main class="col-lg-8 col-md-12 py-4">
+                <div class="container">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../index.html">Accueil</a></li>
+                            <li class="breadcrumb-item"><a href="../index.html#categories">Kits Complets</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Kit Sécurité "Bunker Familial"</li>
+                        </ol>
+                    </nav>
+
+                    <div class="row">
+                        <!-- Colonne Image Produit -->
+                        <div class="col-lg-6">
+                            <div class="product-image-gallery text-center">
+                                <img src="../img/kit.jpg" id="mainProductImage"
+                                    class="img-fluid mb-3 main-product-image" alt="Kit Sécurité Bunker Familial">
+                                <div class="thumbnail-images d-flex justify-content-center">
+                                    <img src="../img/kit.jpg" class="img-thumbnail" alt="Vue 1 - Kit complet"
+                                        onclick="changeImage('../img/kit.png')">
+                                    <img src="../img/kit_bunker_contenu.png" class="img-thumbnail"
+                                        alt="Vue 2 - Contenu détaillé"
+                                        onclick="changeImage('../img/kit_bunker_contenu.png')">
+                                    <!-- Prompt pour img/kit_bunker_contenu.png : "Une image montrant le contenu 'détaillé' du Kit Bunker Familial étalé. On y voit une caméra jouet, une petite alarme en plastique, un cadenas de vélo, un sifflet, un rouleau de ruban adhésif 'SécuriPLUS+', et peut-être une boîte de conserve vide étiquetée 'Rations de Survie (goût carton)'." -->
+                                    <img src="../img/kit_bunker_manuel_suedois.png" class="img-thumbnail"
+                                        alt="Vue 3 - Manuel en Suédois"
+                                        onclick="changeImage('../img/kit_bunker_manuel_suedois.png')">
+                                    <!-- Prompt pour img/kit_bunker_manuel_suedois.png : "Une photo d'un manuel d'instructions ouvert, écrit dans une langue scandinave (ou du faux suédois avec des caractères comme å, ä, ö). Les schémas sont minuscules et incompréhensibles. Le titre pourrait être 'Säkerhetsbunkersats Installationsguide (Lycka till!)'." -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Colonne Détails Produit -->
+                        <div class="col-lg-6">
+                            <h1 class="mb-2">Kit Sécurité "Bunker Familial"</h1>
+                            <div class="d-flex align-items-center mb-2 star-rating-product-page">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star"></i> <!-- Note : 4.0 étoiles comme sur l'index -->
+                                <span class="ms-2 text-muted">(4.0 étoiles - Manuel en suédois, mais les images sont...
+                                    universelles ?)</span>
+                            </div>
+
+                            <div class="product-price mb-3">
+                                <span class="old-price me-2">500,00€</span>
+                                <span class="new-price">149,90€</span>
+                                <span class="badge bg-warning product-discount-badge ms-2 text-dark">Offre à ne PAS
+                                    manquer (sérieux)!</span>
+                            </div>
+
+                            <p class="text-info fw-bold"><i class="bi bi-box-seam-fill"></i> Prêt à expédier (dès que
+                                Kevin aura trouvé une boîte assez grande pour tout mettre... ou plusieurs petites)</p>
+
+                            <p class="lead product-short-description">
+                                Préparez-vous à TOUT avec le Kit "Bunker Familial" ! Apocalypse zombie ? Invasion
+                                extraterrestre ? Belle-mère qui débarque à l'improviste ? Vous serez (presque) paré !
+                            </p>
+
+                            <div class="mb-3">
+                                <label for="quantity" class="form-label">Quantité (un par bunker, ne soyez pas égoïste)
+                                    :</label>
+                                <div class="input-group quantity-selector" style="width: 150px;">
+                                    <button class="btn btn-outline-secondary" type="button"
+                                        onclick="changeQuantity(-1)">-</button>
+                                    <input type="text" class="form-control text-center" value="1" id="quantity"
+                                        readonly>
+                                    <button class="btn btn-outline-secondary" type="button"
+                                        onclick="changeQuantity(1)">+</button>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary btn-lg w-100 mb-3 shadow">
+                                <i class="bi bi-shield-shaded"></i> PRENDRE MON KIT (ET ME BARRICADER) !
+                            </button>
+
+                            <div class="accordion" id="productDetailsAccordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingContents">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseContents" aria-expanded="true"
+                                            aria-controls="collapseContents">
+                                            Contenu du Kit "Bunker Ultime" (Liste non exhaustive et sujette à l'humeur
+                                            de Kevin)
+                                        </button>
+                                    </h2>
+                                    <div id="collapseContents" class="accordion-collapse collapse show"
+                                        aria-labelledby="headingContents" data-bs-parent="#productDetailsAccordion">
+                                        <div class="accordion-body">
+                                            <ul class="list-unstyled kit-contents">
+                                                <li><i class="bi bi-camera-video"></i> <strong>1x Caméra de Surveillance
+                                                        "Vigilante"</strong> (fonctionne avec 2 piles AA, observe
+                                                    principalement le plafond)</li>
+                                                <li><i class="bi bi-volume-up"></i> <strong>1x Mini-Alarme Personnelle
+                                                        "Cri de Souris Paniquée"</strong> (10dB, idéal pour effrayer les
+                                                    fourmis)</li>
+                                                <li><i class="bi bi-lock"></i> <strong>1x Cadenas "Haute
+                                                        Sécurité"</strong> (pour vélo d'enfant, clé incluse... si on la
+                                                    retrouve)</li>
+                                                <li><i class="bi bi-megaphone"></i> <strong>1x Sifflet de
+                                                        Survie</strong> (pour appeler à l'aide ou arbitrer un match de
+                                                    foot imaginaire)</li>
+                                                <li><i class="bi bi-bandaid"></i> <strong>1x Rouleau de Ruban Adhésif
+                                                        SécuriPLUS+</strong> (répare tout, sauf votre moral)</li>
+                                                <li><i class="bi bi-book"></i> <strong>1x Manuel d'Instructions en
+                                                        Suédois</strong> (parfait si vous apprenez le suédois, sinon,
+                                                    bon courage avec les images)</li>
+                                                <li class="questionable-item"><i class="bi bi-egg-fried"></i> 1x Boîte
+                                                    de Conserve "Rations de Survie Goût Mystère" (date de péremption :
+                                                    2003)</li>
+                                                <li class="questionable-item"><i class="bi bi-emoji-sunglasses"></i> 1x
+                                                    Paire de Lunettes de Soleil en Plastique (pour avoir l'air cool
+                                                    pendant l'apocalypse)</li>
+                                                <li class="questionable-item"><i class="bi bi-question-circle"></i> 1x
+                                                    Objet Non Identifié trouvé par Kevin au fond d'un tiroir (peut-être
+                                                    utile ?)</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingAssembly">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseAssembly"
+                                            aria-expanded="false" aria-controls="collapseAssembly">
+                                            Assemblage & Installation (Bonne Chance !)
+                                        </button>
+                                    </h2>
+                                    <div id="collapseAssembly" class="accordion-collapse collapse"
+                                        aria-labelledby="headingAssembly" data-bs-parent="#productDetailsAccordion">
+                                        <div class="accordion-body">
+                                            <p>L'assemblage de votre Bunker Familial est une aventure en soi ! Suivez
+                                                les instructions (en suédois) ou faites appel à votre instinct de survie
+                                                (et à beaucoup de café).</p>
+                                            <p><strong>Temps estimé :</strong> Entre 2 heures et l'éternité, selon votre
+                                                niveau de suédois et votre tolérance à la frustration.</p>
+                                            <p><strong>Outils requis (non inclus) :</strong> Tournevis (de toutes
+                                                tailles), marteau (pour se défouler), traducteur suédois-français, une
+                                                bonne dose de patience, et l'aide de Kevin (disponible par télépathie
+                                                uniquement les mardis).</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Onglets : Description Détaillée, Avis Clients -->
+                    <div class="mt-5">
+                        <ul class="nav nav-tabs" id="productTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="description-tab" data-bs-toggle="tab"
+                                    data-bs-target="#description" type="button" role="tab" aria-controls="description"
+                                    aria-selected="true">Description Détaillée (Pour les Vrais Survivalistes... ou les
+                                    Paranos)</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews"
+                                    type="button" role="tab" aria-controls="reviews" aria-selected="false">Avis des
+                                    Experts en Bunker (Nos Clients les Plus Préparés)</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content pt-3" id="productTabContent">
+                            <div class="tab-pane fade show active" id="description" role="tabpanel"
+                                aria-labelledby="description-tab">
+                                <h4>Kit Sécurité "Bunker Familial" : Votre Passeport pour la Tranquillité (ou l'Anxiété
+                                    Accrue) !</h4>
+                                <p>Le monde est un endroit effrayant. Entre les factures, les réunions Zoom
+                                    interminables et la possibilité que votre grille-pain complote contre vous, il est
+                                    temps de prendre les choses en main ! Le Kit Sécurité "Bunker Familial" de
+                                    SécuriPLUS+ est la réponse à toutes vos angoisses (ou du moins, il vous donnera
+                                    l'impression de faire quelque chose).</p>
+                                <p>Ce kit a été méticuleusement assemblé par notre équipe d'experts en survie (Kevin,
+                                    après avoir regardé une saison entière d'une émission de télé-réalité sur le sujet).
+                                    Il contient tout ce dont vous avez (peut-être) besoin pour transformer votre salon
+                                    en une forteresse impénétrable (sauf pour les courants d'air).</p>
+                                <p><strong>Pourquoi ce kit est-il indispensable (selon nous) ?</strong></p>
+                                <ul>
+                                    <li><strong>Polyvalence :</strong> Utile contre les zombies, les démarcheurs, ou
+                                        simplement pour avoir une excuse pour ne pas sortir le dimanche.</li>
+                                    <li><strong>Éducatif :</strong> Apprenez le suédois en déchiffrant le manuel ! Ou
+                                        inventez votre propre langue.</li>
+                                    <li><strong>Design :</strong> Certains éléments du kit peuvent servir de décoration
+                                        "industrielle chic" si vous êtes à court d'idées.</li>
+                                    <li><strong>Le facteur "Mystère" :</strong> L'objet non identifié inclus saura
+                                        pimenter votre quotidien. Est-ce une pièce de rechange ? Un artefact ancien ? Un
+                                        biscuit pour chien fossilisé ? À vous de découvrir !</li>
+                                </ul>
+                                <p class="text-warning fw-bold">Note importante : SécuriPLUS+ ne garantit pas que ce kit
+                                    vous sauvera réellement en cas d'apocalypse. Mais il vous occupera un bon moment,
+                                    c'est déjà ça.</p>
+                            </div>
+                            <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                                <h5>Ce qu'en disent les survivalistes (et Kévin) :</h5>
+                                <div class="fake-review mt-3">
+                                    <div class="star-rating-product-page mb-1">
+                                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star-half"></i> (4.5/5)
+                                    </div>
+                                    <p><strong>"Prêt pour l'invasion des écureuils mutants !"</strong> - Par
+                                        PrepperPierre78, le 12 Juin 2024</p>
+                                    <p>"J'ai acheté ce kit pour me préparer à l'inévitable soulèvement des écureuils. Le
+                                        manuel en suédois était un défi, mais j'ai réussi à monter la mini-alarme. Elle
+                                        a fait fuir mon chat, donc je suppose qu'elle marche contre les petites
+                                        créatures. La boîte de conserve goût mystère... reste un mystère. Bon rapport
+                                        qualité-prix pour la tranquillité d'esprit (et les fous rires)."</p>
+                                </div>
+                                <div class="fake-review">
+                                    <div class="star-rating-product-page mb-1">
+                                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><i
+                                            class="bi bi-star"></i> (3.5/5)
+                                    </div>
+                                    <p><strong>"L'objet non identifié est... intéressant."</strong> - Par
+                                        CurieuseCorinne, le 15 Juin 2024</p>
+                                    <p>"Le kit est arrivé dans une boîte un peu cabossée, mais tout y était (je crois).
+                                        Le manuel en suédois est parfait pour caler ma table de jardin. L'objet non
+                                        identifié ressemble à un vieux jouet pour chien, mais je l'ai mis sur ma
+                                        cheminée, ça fait 'art contemporain'. Kevin du SAV a été très... évasif quand je
+                                        lui ai posé des questions sur cet objet."</p>
+                                    <!-- Indice ARG caché ici -->
+                                    <p class="small text-muted mt-2"
+                                        style="font-family: 'Courier New', monospace; font-size: 0.7rem; opacity: 0.5; letter-spacing: 2px;">
+                                        <!-- K.E.V.I.N. A. B.E.S.O.I.N. D.E. C.A.F.E. L.E. M.A.N.U.E.L. E.S.T. L.A. C.L.E. P.A.N.E.L. A.D.M.I.N. S.E.C.T.I.O.N. P.A.R.A.M.E.T.R.E.S. A.R.C.H.I.V.E.S. -->
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+
+            <!-- Barre Latérale Droite - FAUSSES PUBLICITÉS (copier et adapter les chemins) -->
+            <aside class="col-lg-2 d-none d-lg-block fake-ad-sidebar">
+                <div class="fake-ad">
+                    <h5>DEVENEZ MILLIONNAIRE GRÂCE AUX CHAUSSETTES !</h5>
+                    <img src="../img/pubGETRICH.png" alt="Pub Chaussettes" class="gif-style">
+                    <p>(Formation exclusive...)</p>
+                    <button class="btn-ad"><a href="../getrich.html">JE VEUX ÊTRE RICHE !!!</a></button>
+                </div>
+                <div class="fake-ad">
+                    <h5>LES EXTRATERRESTRES SONT PARMI NOUS !</h5>
+                    <img src="../img/pubEXTRA.png" alt="Pub Extraterrestres" class="gif-style">
+                    <p>Achetez notre détecteur...</p>
+                    <button class="btn-ad"><a href="../protect.html">PROTÉGEZ-VOUS!</a></button>
+                </div>
+                <div class="fake-ad">
+                    <h5>Gagnez un voyage sur MARS!</h5>
+                    <img src="../img/pubMARSTRIP.png" alt="Pub Mars" class="gif-style">
+                    <p>(Aller simple...)</p>
+                    <button class="btn-ad"><a href="../mars.html">JE M'INSCRIS!</a></button>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Pied de Page (copier et adapter les chemins) -->
+    <footer id="contact" class="footer-custom text-center">
+        <div class="container">
+            <!-- ... (contenu du footer, avec les liens ../) ... -->
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5>SécuriPLUS+</h5>
+                    <p>Votre tranquillité, notre préoccupation (presque) principale !<br>On fait de notre mieux, promis.
+                    </p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Liens (plus ou moins) Utiles</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../qui_sommes_nous.html">Qui sommes-nous (mystère...)</a></li>
+                        <li><a href="../blog.html">Notre Blog (toujours en pause)</a></li>
+                        <li><a href="../mention.html">Mentions Légales (bientôt disponible... depuis 2020)</a></li>
+                        <li><a href="../faq.html">FAQ (lisez-la VRAIMENT)</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Contactez-nous (si vous insistez)</h5>
+                    <p>Email: contact.securiplus@email-gratuit.com <br> (Réponse sous 3 à 15 jours ouvrés... ou jamais)
+                    </p>
+                    <div class="social-icons mt-2">
+                        <a href="#" title="Notre page Facebook (inexistante)"><i class="bi bi-facebook"></i></a>
+                        <a href="#" title="Notre Twitter (un compte par défaut)"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" title="Notre Instagram (photos de chats uniquement)"><i
+                                class="bi bi-instagram"></i></a>
+                        <a href="#" title="Notre LinkedIn (profil du stagiaire)"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright-line">
+                <p>© 2015 - <span id="currentYear"></span> SécuriPLUS+ Technologies Internationales (et du
+                    Terroir).<br>Tous droits (plus ou moins) réservés. Site fièrement réalisé avec du café, de l'espoir
+                    et quelques tutos YouTube.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        function changeImage(newImageSrc) {
+            document.getElementById('mainProductImage').src = newImageSrc;
+        }
+
+        function changeQuantity(amount) {
+            let quantityInput = document.getElementById('quantity');
+            let currentValue = parseInt(quantityInput.value);
+            let newValue = currentValue + amount;
+            if (newValue < 1) newValue = 1;
+            if (newValue > 1) {
+                alert("Un seul bunker par famille, s'il vous plaît ! Partagez les ressources (et le manuel en suédois).");
+                newValue = 1;
+            }
+            quantityInput.value = newValue;
+        }
+
+        // Indice ARG caché dans la console pour cette page
+        console.log("%cPage Produit 'Kit Bunker Familial' - Debug Mode (Activé par Kevin)", "background: #0dcaf0; color: black; font-size: 14px;");
+        console.log("%cKevin soupire : 'Ce kit est aussi fiable que mes tentatives pour faire fonctionner la machine à café sans le manuel. D'ailleurs, j'ai entendu dire que le manuel était la clé de tout. J'ai essayé de laisser un message codé dans les avis de ce produit... avec des lettres espacées. Peut-être que ça mènera quelque part ? Genre, au panel admin, puis aux paramètres, puis aux archives ? Juste une idée...'", "color: #b37400;");
+    </script>
+</body>
+
+</html>

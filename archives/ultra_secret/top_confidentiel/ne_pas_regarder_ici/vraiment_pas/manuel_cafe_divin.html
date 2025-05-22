@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MANUEL SECRET : Cafetière SécuriPLUS+ "Espoir Matinal"</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Optionnel: Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- CSS Personnalisé (peut reprendre des styles de styles.css si besoin) -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            /* Police de manuel technique "rétro" */
+            background-color: #fdf5e6;
+            /* Couleur parchemin/vieux papier */
+            color: #3b2f2f;
+            /* Brun foncé pour le texte */
+            line-height: 1.7;
+        }
+
+        .manual-container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 30px;
+            border: 5px double #8B4513;
+            /* Marron selle (bordure double) */
+            background-color: #fffaf0;
+            /* Blanc floral (fond intérieur) */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .manual-title {
+            font-family: 'Papyrus', fantasy;
+            /* Police "ancienne" et un peu kitsch */
+            font-size: 2.8rem;
+            color: #5D4037;
+            /* Brun plus soutenu */
+            text-align: center;
+            border-bottom: 3px solid #8B4513;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px #D2B48C;
+            /* Tan (ombre légère) */
+        }
+
+        .manual-subtitle {
+            font-family: 'Comic Sans MS', cursive;
+            /* La touche SécuriPLUS+ */
+            font-size: 1.5rem;
+            color: #795548;
+            /* Brun */
+            text-align: center;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .chapter-title {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.8rem;
+            color: #8B0000;
+            /* Rouge sombre */
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 5px solid #8B0000;
+            padding-left: 10px;
+        }
+
+        .warning-box {
+            border: 2px dashed #FF4500;
+            /* OrangeRed */
+            background-color: #fff0e1;
+            /* Pêche clair */
+            padding: 15px;
+            margin: 20px 0;
+            font-weight: bold;
+            color: #A52A2A;
+            /* Brun rougeâtre */
+        }
+
+        .warning-box strong {
+            color: #FF0000;
+            /* Rouge vif */
+        }
+
+        .diagram {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 20px auto;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        .diagram img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #999;
+        }
+
+        .diagram-caption {
+            font-size: 0.9rem;
+            font-style: italic;
+            color: #555;
+            margin-top: 5px;
+        }
+
+        .kevin-note {
+            background-color: #e0ffff;
+            /* Cyan clair (comme un post-it) */
+            border-left: 4px solid #008080;
+            /* Teal */
+            padding: 10px;
+            margin: 15px 0;
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+
+        .victory-section {
+            background-color: #e6ffe6;
+            /* Vert pâle pour la victoire */
+            border-top: 4px solid #28a745;
+            /* Vert succès */
+        }
+
+        .victory-title {
+            color: #155724;
+            /* Vert foncé */
+            font-family: 'Arial Black', Gadget, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="manual-container">
+        <h1 class="manual-title">Manuel d'Utilisation & de Conjuration</h1>
+        <h2 class="manual-subtitle">Cafetière SécuriPLUS+ Modèle "Espoir Matinal" (circa 1978, révisé par Kevin en 2024)
+        </h2>
+
+        <div class="warning-box">
+            <strong>AVERTISSEMENT SOLENNEL :</strong> L'utilisation de cet appareil est réservée aux individus dotés
+            d'une patience infinie, d'un sens de l'humour à toute épreuve, et d'une affinité particulière avec les
+            technologies capricieuses. SécuriPLUS+ décline toute responsabilité en cas de crise de nerfs, de café au
+            goût de chaussette, ou d'invocation accidentelle d'esprits frappeurs. Lisez attentivement (ou pas, de toute
+            façon, c'est probablement incompréhensible).
+        </div>
+
+        <p class="kevin-note">
+            <strong>Note de Kevin :</strong> J'ai essayé de rendre ce manuel un peu plus clair que l'original (qui était
+            écrit en hiéroglyphes et en taches de café). Bonne chance. Vous en aurez besoin. Si vous réussissez, vous
+            êtes mon héros.
+        </p>
+
+        <section id="chapitre1">
+            <h3 class="chapter-title">Chapitre 1 : L'Allumage Mystique & la Préparation Spirituelle</h3>
+            <p>Avant toute chose, il est impératif de se mettre dans de bonnes dispositions. La machine "Espoir Matinal"
+                est sensible aux ondes négatives (et au manque de caféine de son utilisateur).</p>
+            <ol>
+                <li><strong>Le Salut Matinal :</strong> Approchez-vous de la machine avec respect. Un léger salut de la
+                    tête est apprécié. Ne la regardez JAMAIS directement dans le filtre avant 9h du matin.</li>
+                <li><strong>L'Invocation du Bouton "ON" :</strong> Localisez le bouton marqué (vaguement) "ON". Il est
+                    généralement celui qui est le plus usé et qui a une couleur indéfinissable.
+                    <ul>
+                        <li>Appuyez fermement mais avec tendresse. Un "CLONK" sonore est un signe positif.</li>
+                        <li>Si rien ne se passe, essayez de tapoter doucement le côté de la machine en fredonnant une
+                            chanson populaire des années 70. "Stayin' Alive" fonctionne parfois.</li>
+                        <li>Si des étincelles jaillissent du cordon d'alimentation, considérez cela comme un feu
+                            d'artifice de bienvenue. Ou un appel aux pompiers. À vous de juger.</li>
+                    </ul>
+                </li>
+                <li><strong>Le Murmure d'Encouragement :</strong> Une fois (et si) la machine daigne s'allumer (un léger
+                    bourdonnement asthmatique est normal), murmurez-lui quelques mots doux. Exemple : "Allez ma belle,
+                    aujourd'hui tu vas nous faire un café digne de ce nom... s'il te plaît ?"</li>
+            </ol>
+        </section>
+
+        <div class="diagram">
+            <img src="../../../../../img/schema_cafetiere_absurde.png" alt="Schéma technique (très) approximatif de la cafetière">
+            <p class="diagram-caption">Fig. 1a : Schéma simplifié de la zone d'interaction principale. Le composant "A"
+                est le bouton "ON/OFF/PEUT-ÊTRE". Le "B" est l'endroit où Kevin pleure parfois.</p>
+        </div>
+        <!-- Prompt pour img/schema_cafetiere_absurde.png : "Dessin technique au trait, très simpliste et un peu tremblant, d'une vieille cafetière filtre. Les légendes (A, B, C...) pointent vers des parties de la machine avec des descriptions absurdes ou des flèches qui ne mènent nulle part. Le style doit être celui d'un manuel technique dessiné à la hâte par quelqu'un qui n'est pas ingénieur." -->
+
+
+        <section id="chapitre2">
+            <h3 class="chapter-title">Chapitre 2 : Le Dosage Alchimique du Café & de l'Eau Bénite</h3>
+            <p>C'est ici que la magie (ou le désastre) opère. Le ratio café/eau est plus un art divinatoire qu'une
+                science exacte avec l'"Espoir Matinal".</p>
+            <ul>
+                <li><strong>Le Café des Dieux (ou du fond du placard) :</strong> Utilisez de préférence du café moulu.
+                    Si vous n'avez que des grains, la machine appréciera que vous les écrasiez avec une pierre plate et
+                    beaucoup de conviction.</li>
+                <li><strong>La Quantité Sacrée :</strong>
+                    <ul>
+                        <li>Pour un café "Réveil en Douceur" (goût d'eau chaude) : 1 cuillère à café rase.</li>
+                        <li>Pour un café "Kevin Standard" (nécessaire pour survivre à la matinée) : 3-4 cuillères à
+                            soupe bombées (ou une petite poignée).</li>
+                        <li>Pour un café "Le Chef est de Mauvaise Humeur" (goudron liquide) : Remplissez le filtre à ras
+                            bord et priez.</li>
+                    </ul>
+                </li>
+                <li><strong>L'Eau de Source (du Robinet) :</strong> Remplissez le réservoir d'eau. Si vous voyez des
+                    inscriptions runiques au fond du réservoir, ne vous inquiétez pas, c'est juste du calcaire ancien.
+                    Il ajoute du "caractère".</li>
+            </ul>
+            <p class="kevin-note">
+                <strong>Note de Kevin :</strong> J'ai essayé une fois avec de l'eau gazeuse. Mauvaise idée. Très
+                mauvaise idée. Le plafond s'en souvient encore.
+            </p>
+        </section>
+
+        <section id="chapitre3">
+            <h3 class="chapter-title">Chapitre 3 : L'Extraction Divine & la Patience Angélique</h3>
+            <p>Une fois les ingrédients en place, le grand moment est arrivé. Ou presque.</p>
+            <ol>
+                <li>Placez une carafe (ou une casserole, ou un seau propre en cas d'urgence caféinée collective) sous le
+                    bec verseur.</li>
+                <li>Attendez. La machine prend son temps. C'est une diva. Elle peut émettre des gargouillis, des
+                    sifflements, ou des bruits ressemblant à un petit animal en détresse. C'est normal.</li>
+                <li>Si après 15 minutes, rien ne coule, vérifiez que vous avez bien appuyé sur le bouton "ON" (voir
+                    Chapitre 1, section 2, sous-section b, alinéa ii).</li>
+                <li>Le premier "jet" de café est souvent un test de votre foi. Il peut être clair comme de l'eau de
+                    vaisselle ou noir comme l'âme du comptable. Persévérez.</li>
+            </ol>
+        </section>
+
+        <section id="chapitre4">
+            <h3 class="chapter-title">Chapitre 4 : Dépannage Ésotérique & Rituels de Maintenance</h3>
+            <div class="warning-box">
+                <strong>ATTENTION :</strong> Les opérations de maintenance suivantes ne doivent être effectuées que par
+                un technicien qualifié (ou Kevin, car personne d'autre n'ose s'en approcher).
+            </div>
+            <ul>
+                <li><strong>La machine fume noir et sent le brûlé :</strong> Elle est probablement en train de méditer
+                    profondément sur le sens de la vie (ou de griller ses circuits). Débranchez-la et offrez-lui une
+                    journée de repos.</li>
+                <li><strong>Le café a un goût métallique :</strong> Félicitations, vous avez probablement ingéré une
+                    partie des composants internes de la machine. Consultez un médecin. Ou passez au thé.</li>
+                <li><strong>La machine parle en latin ou émet des chants grégoriens :</strong> Elle est possédée.
+                    Appelez un exorciste certifié SécuriPLUS+ (service non inclus). Alternativement, essayez de lui
+                    chanter "Bohemian Rhapsody" en retour, cela la perturbe parfois.</li>
+                <li><strong>Nettoyage (annuel, si on y pense) :</strong> Versez du vinaigre blanc. Attendez. Rincez.
+                    Priez pour que l'odeur de vinaigre disparaisse avant la prochaine décennie.</li>
+            </ul>
+            <p class="kevin-note">
+                <strong>Note de Kevin :</strong> Le "nettoyage au vinaigre" a une fois transformé le bureau en sauna
+                finlandais aromatisé à la salade. Le Chef n'a pas apprécié. Depuis, on ne la nettoie plus. Ça explique
+                beaucoup de choses sur le goût.
+            </p>
+        </section>
+
+        <hr class="my-5">
+
+        <!-- Section de Victoire -->
+        <div class="text-center py-5 victory-section">
+            <h2 class="victory-title display-4">🎉 FÉLICITATIONS, Ô DOMPTEUR DE CAFETIÈRE ! 🎉</h2>
+            <img src="../../../../../img/kevin_cafe_victoire.png" alt="Kevin savourant un café divin"
+                class="img-fluid my-4 rounded-circle shadow" style="max-width:250px; border: 5px solid #28a745;">
+            <p class="lead fs-4">Grâce à votre incroyable perspicacité, votre courage face à l'absurdité technologique,
+                et probablement une bonne dose de chance, vous avez découvert et déchiffré le Manuel Sacré de la
+                Cafetière "Espoir Matinal" !</p>
+            <p class="fs-5"><strong>Kevin vous est éternellement reconnaissant !</strong> Les matins au bureau
+                SécuriPLUS+ ne seront plus jamais les mêmes. Le café coule (presque) à flots, et il a un goût... eh
+                bien, il a un goût de café maintenant ! C'est une révolution !</p>
+            <p>Votre nom sera gravé en lettres d'or (au marqueur indélébile sur un post-it) dans le Panthéon des Héros
+                du Café de SécuriPLUS+.</p>
+            <a href="../../../../../index.html" class="btn btn-lg btn-success mt-4 shadow-lg">
+                <i class="bi bi-house-heart-fill"></i> Retourner Triomphalement à l'Accueil (et se vanter)
+            </a>
+            <p class="small mt-4 text-muted">
+                <em>(PS de Kevin : Le Chef est très impressionné. Il pense que j'ai enfin développé des super-pouvoirs
+                    liés au café. Je ne vais pas le contredire. Merci encore, vous êtes une légende !)</em>
+            </p>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS Bundle (Popper.js inclus) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

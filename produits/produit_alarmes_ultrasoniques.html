@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alarmes Ultra-Soniques - SécuriPLUS+</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Optionnel: Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- CSS Personnalisé - Chemin corrigé -->
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        /* Styles spécifiques à la page produit (peuvent être repris) */
+        .product-image-gallery {}
+
+        .main-product-image {
+            border: 1px solid #ddd;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .thumbnail-images img {
+            border: 1px solid #eee;
+            padding: 5px;
+            margin: 5px;
+            cursor: pointer;
+            max-width: 80px;
+        }
+
+        .thumbnail-images img:hover {
+            border-color: #0d6efd;
+        }
+
+        .product-price .new-price {
+            color: #198754;
+            /* Vert succès */
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .product-feature-badge {
+            font-size: 1rem;
+            padding: 0.4em 0.7em;
+        }
+
+        .quantity-selector input {
+            width: 60px;
+            text-align: center;
+        }
+
+        .nav-tabs .nav-link.active {
+            background-color: #e9ecef;
+            border-bottom-color: #e9ecef;
+        }
+
+        .fake-review {
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .fake-review:last-child {
+            border-bottom: none;
+        }
+
+        .star-rating-product-page .bi-star-fill,
+        .star-rating-product-page .bi-star-half,
+        .star-rating-product-page .bi-star {
+            color: #ffc107;
+            font-size: 1.2rem;
+        }
+
+        .frequency-dial {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #e9ecef;
+            border: 5px solid #6c757d;
+            position: relative;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dial-pointer {
+            width: 5px;
+            height: 60px;
+            background-color: #dc3545;
+            /* Rouge */
+            position: absolute;
+            bottom: 50%;
+            left: calc(50% - 2.5px);
+            transform-origin: bottom center;
+            transition: transform 0.5s ease-out;
+        }
+
+        .dial-markings span {
+            position: absolute;
+            font-size: 0.7rem;
+            color: #343a40;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Barre de Navigation (copier et adapter les chemins) -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <span class="logo-text">Sécuri<span class="logo-plus">PLUS+</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav" style="justify-content: flex-end;">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#categories">Nos Super Produits</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#promos">Promos de Folie !</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../blog.html">Le Blog (...)</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#contact">Contactez-nous (...)</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Barre Latérale Gauche - FAUSSES PUBLICITÉS (copier et adapter les chemins) -->
+            <aside class="col-lg-2 d-none d-lg-block fake-ad-sidebar">
+                <div class="fake-ad">
+                    <h5>Perdez 10kg en 3 jours SANS EFFORT!</h5>
+                    <img src="../img/pubMINCEUR.png" alt="Pub Minceur" class="gif-style">
+                    <p>(Résultats non garantis...)</p>
+                    <button class="btn-ad"><a href="../minceur.html">DÉCOUVREZ !!!</a></button>
+                </div>
+                <div class="fake-ad">
+                    <h5>Horoscope du jour:</h5>
+                    <img src="../img/pubHOROSCOPE.png" alt="Pub Horoscope" class="gif-style">
+                    <p>Gagnez un porte-clé !</p>
+                    <button class="btn-ad"><a href="../horoscope.html">MON HOROSCOPE!</a></button>
+                </div>
+                <div class="fake-ad">
+                    <h5>SONNERIES POLYPHONIQUES 2005!</h5>
+                    <img src="../img/pubNOKIA.png" alt="Pub Sonneries" class="gif-style">
+                    <p>Crazy Frog inclus!</p>
+                    <button class="btn-ad"><a href="../sonneries.html">TÉLÉCHARGEZ!</a></button>
+                </div>
+            </aside>
+
+            <!-- Contenu Principal de la Page Produit -->
+            <main class="col-lg-8 col-md-12 py-4">
+                <div class="container">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../index.html">Accueil</a></li>
+                            <li class="breadcrumb-item"><a href="../index.html#categories">Systèmes d'Alarme</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Alarmes Ultra-Soniques</li>
+                        </ol>
+                    </nav>
+
+                    <div class="row">
+                        <!-- Colonne Image Produit -->
+                        <div class="col-lg-6">
+                            <div class="product-image-gallery text-center">
+                                <img src="../img/alarmeFils.png" id="mainProductImage"
+                                    class="img-fluid mb-3 main-product-image" alt="Alarme Ultra-Sonique">
+                                <!-- Prompt pour img/alarmeFils.png (si besoin de le refaire) : "Une alarme de sécurité d'aspect un peu cheap, en plastique gris ou beige, avec beaucoup de fils visibles et mal organisés qui sortent de l'arrière. Un gros bouton rouge 'PANIC' est proéminent sur le devant." -->
+                                <div class="thumbnail-images d-flex justify-content-center">
+                                    <img src="../img/alarmeFils.png" class="img-thumbnail"
+                                        alt="Vue 1 - Alarme principale" onclick="changeImage('../img/alarmeFils.png')">
+                                    <img src="../img/alarme_ultrasonique_emetteur.png" class="img-thumbnail"
+                                        alt="Vue 2 - Émetteur ultrasonique"
+                                        onclick="changeImage('../img/alarme_ultrasonique_emetteur.png')">
+                                    <!-- Prompt pour img/alarme_ultrasonique_emetteur.png : "Gros plan sur l'émetteur 'ultrasonique' de l'alarme. Il ressemble à un petit haut-parleur de jouet ou à un transducteur piezoélectrique basique, peut-être avec une grille métallique un peu tordue." -->
+                                    <img src="../img/alarme_ultrasonique_frequences.png" class="img-thumbnail"
+                                        alt="Vue 3 - Sélecteur de fréquences (GIF)"
+                                        onclick="changeImage('../img/alarme_ultrasonique_frequences.png')">
+                                    <!-- Prompt pour img/alarme_ultrasonique_frequences.gif : "Un GIF animé d'un cadran rotatif (style vieux poste de radio) sur l'alarme. L'aiguille du cadran bouge de manière erratique entre des fréquences étiquetées 'Moustique', 'Chat du Voisin', 'Belle-Mère', 'Aliens Timides', 'Kevin (quand il chante)'." -->
+                                </div>
+                                <div class="mt-3 text-center">
+                                    <p class="mb-1">Sélecteur de Fréquence "Scientifique" :</p>
+                                    <div class="frequency-dial">
+                                        <div class="dial-pointer" id="dialPointer"></div>
+                                        <!-- Marques simplistes pour le cadran -->
+                                        <div class="dial-markings">
+                                            <span style="top: 5px; left: calc(50% - 10px);">0Hz</span>
+                                            <span style="top: calc(50% - 10px); right: 5px;">MAX</span>
+                                            <span style="bottom: 5px; left: calc(50% - 25px);">???</span>
+                                            <span style="top: calc(50% - 10px); left: 5px;">MIN</span>
+                                        </div>
+                                    </div>
+                                    <input type="range" class="form-range w-75 mx-auto mt-2" min="0" max="100"
+                                        value="50" id="frequencySlider" oninput="updateDial(this.value)">
+                                    <p class="small text-muted">Actuellement réglé sur : <span
+                                            id="currentFrequency">"Peut-être efficace"</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Colonne Détails Produit -->
+                        <div class="col-lg-6">
+                            <h1 class="mb-2">Alarmes Ultra-Soniques <small class="text-muted fs-5">(font fuir les
+                                    moustiques aussi... et les compliments)</small></h1>
+                            <div class="d-flex align-items-center mb-2 star-rating-product-page">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                                <i class="bi bi-star"></i>
+                                <span class="ms-2 text-muted">(3.2 étoiles - Les écureuils sont perplexes, les
+                                    moustiques indifférents)</span>
+                            </div>
+
+                            <div class="product-price mb-3">
+                                <span class="new-price">42,42€</span>
+                                <span class="badge bg-success product-feature-badge ms-2">Décibels Garantis ! (Audibles
+                                    uniquement par les chiens et Kevin)</span>
+                            </div>
+
+                            <p class="text-primary fw-bold"><i class="bi bi-soundwave"></i> Technologie "Sonic Boom"
+                                (nom déposé par Kevin après une sieste)</p>
+
+                            <p class="lead product-short-description">
+                                Protège votr maison contre les intrus (et les écureuils trop curieux). Émet des
+                                fréquences que seuls les êtres indésirables (et parfois vous) peuvent entendre. Ou pas.
+                                C'est une surprise !
+                            </p>
+
+                            <div class="mb-3">
+                                <label for="quantity" class="form-label">Quantité (une par pièce pour une cacophonie
+                                    ultrasonique totale) :</label>
+                                <div class="input-group quantity-selector" style="width: 150px;">
+                                    <button class="btn btn-outline-secondary" type="button"
+                                        onclick="changeQuantity(-1)">-</button>
+                                    <input type="text" class="form-control text-center" value="1" id="quantity"
+                                        readonly>
+                                    <button class="btn btn-outline-secondary" type="button"
+                                        onclick="changeQuantity(1)">+</button>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-success btn-lg w-100 mb-3 shadow">
+                                <i class="bi bi-earbuds"></i> VOIR LES MODÈLES (ET PRÉPARER LES BOULES QUIÈS)
+                            </button>
+
+                            <div class="accordion" id="productDetailsAccordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingSonic">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseSonic" aria-expanded="true"
+                                            aria-controls="collapseSonic">
+                                            Pouvoirs Soniques (et Effets Secondaires)
+                                        </button>
+                                    </h2>
+                                    <div id="collapseSonic" class="accordion-collapse collapse show"
+                                        aria-labelledby="headingSonic" data-bs-parent="#productDetailsAccordion">
+                                        <div class="accordion-body">
+                                            <ul>
+                                                <li><strong>Fréquences Ajustables :</strong> De "inaudible pour l'humain
+                                                    normal" à "audible et très agaçant pour tout le monde".</li>
+                                                <li><strong>Mode "Anti-Moustique" :</strong> Émet un son que les
+                                                    moustiques sont censés détester. (Résultats non concluants, mais ça
+                                                    énerve bien les chiens).</li>
+                                                <li><strong>Mode "Anti-Écureuil" :</strong> Une fréquence spéciale pour
+                                                    faire comprendre aux écureuils que vos noix sont VOS noix. (Ils s'en
+                                                    moquent généralement).</li>
+                                                <li><strong>Mode "Anti-Voisin Curieux" :</strong> Émet un son subtil qui
+                                                    donne juste envie au voisin de rentrer chez lui sans savoir
+                                                    pourquoi.</li>
+                                                <li><strong>Portée :</strong> "Impressionnante" (si vous êtes une
+                                                    chauve-souris). Pour les humains, ça dépend de votre acuité auditive
+                                                    et de votre imagination.</li>
+                                                <li><strong>Effets Secondaires Possibles :</strong> Maux de tête légers,
+                                                    envie de chanter l'opéra, perception accrue des conversations des
+                                                    dauphins.</li>
+                                                <li><strong>Consommation :</strong> Nécessite une petite centrale
+                                                    nucléaire personnelle (ou 8 piles D, non fournies).</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingInstallation">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseInstallation"
+                                            aria-expanded="false" aria-controls="collapseInstallation">
+                                            Installation & Harmonisation des Fréquences
+                                        </button>
+                                    </h2>
+                                    <div id="collapseInstallation" class="accordion-collapse collapse"
+                                        aria-labelledby="headingInstallation" data-bs-parent="#productDetailsAccordion">
+                                        <div class="accordion-body">
+                                            <p><strong>Installation :</strong> Posez-la quelque part. Branchez les fils
+                                                (dans n'importe quel ordre, c'est plus drôle). Allumez.</p>
+                                            <p><strong>Réglage des Fréquences :</strong> Tournez le cadran jusqu'à ce
+                                                que quelque chose se passe (ou pas). Si vos animaux de compagnie
+                                                commencent à danser la Macarena, vous êtes sur la bonne voie.</p>
+                                            <p class="text-danger"><strong>Avertissement :</strong> Ne pas diriger
+                                                directement vers les oreilles de Kevin pendant plus de 5 minutes. Il
+                                                devient... étrange.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Onglets : Description Détaillée, Avis Clients -->
+                    <div class="mt-5">
+                        <ul class="nav nav-tabs" id="productTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="description-tab" data-bs-toggle="tab"
+                                    data-bs-target="#description" type="button" role="tab" aria-controls="description"
+                                    aria-selected="true">Description Détaillée (Pour les Oreilles Averties)</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews"
+                                    type="button" role="tab" aria-controls="reviews" aria-selected="false">Avis des
+                                    Utilisateurs (Et des Moustiques S'ils Pouvaient Parler)</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content pt-3" id="productTabContent">
+                            <div class="tab-pane fade show active" id="description" role="tabpanel"
+                                aria-labelledby="description-tab">
+                                <h4>Alarmes Ultra-Soniques SécuriPLUS+ : Le silence est d'or, mais nos ultrasons sont...
+                                    autre chose !</h4>
+                                <p>Découvrez la pointe de la technologie (de 1983, retrouvée dans les archives de Kevin)
+                                    avec nos Alarmes Ultra-Soniques ! Conçues pour repousser les nuisibles de toutes
+                                    tailles, des moustiques agaçants aux écureuils chapardeurs, en passant par les
+                                    intrus humains qui n'aiment pas les sons bizarres.</p>
+                                <p>Le principe est simple : l'alarme émet des ondes sonores à des fréquences que la
+                                    plupart des humains ne peuvent (théoriquement) pas entendre, mais qui sont censées
+                                    être insupportables pour certaines créatures. En pratique, les résultats varient.
+                                    Parfois, ça marche. Parfois, ça attire des chauves-souris curieuses. Parfois, ça
+                                    donne juste mal à la tête à Kevin.</p>
+                                <p><strong>Les "PLUS" de nos Alarmes Ultra-Soniques :</strong></p>
+                                <ul>
+                                    <li><strong>Discrétion (pour vous) :</strong> Vous ne l'entendrez peut-être pas,
+                                        mais les intrus (et votre chien) oui ! (Enfin, on espère).</li>
+                                    <li><strong>Polyvalence :</strong> Repousse les moustiques, les écureuils, les
+                                        démarcheurs, et peut-être même les idées noires.</li>
+                                    <li><strong>Effet Placebo Garanti :</strong> Vous vous sentirez plus en sécurité,
+                                        même si c'est juste psychologique.</li>
+                                    <li><strong>Design "Rétro-Futuriste" :</strong> Avec ses nombreux fils et son cadran
+                                        mystérieux, elle ajoutera une touche "scientifique" à votre intérieur.</li>
+                                </ul>
+                                <p class="text-warning fw-bold">Note : L'efficacité sur les belles-mères n'a pas été
+                                    prouvée scientifiquement, mais certains clients rapportent des "résultats
+                                    intéressants". À utiliser à vos propres risques.</p>
+                            </div>
+                            <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                                <h5>Ce qu'ils en disent (ceux qui entendent encore quelque chose) :</h5>
+                                <div class="fake-review mt-3">
+                                    <div class="star-rating-product-page mb-1">
+                                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star-fill"></i><i class="bi bi-star"></i><i
+                                            class="bi bi-star"></i> (3/5)
+                                    </div>
+                                    <p><strong>"Mon chien me fait la tête."</strong> - Par MaîtreDeFido, le 10 Juillet
+                                        2024</p>
+                                    <p>"J'ai acheté ça pour les moustiques. Les moustiques s'en fichent royalement, mais
+                                        mon chien Fido refuse de rentrer dans le salon depuis. Il me regarde avec des
+                                        yeux tristes. Par contre, plus aucun écureuil sur la terrasse ! Je suis mitigé."
+                                    </p>
+                                </div>
+                                <div class="fake-review">
+                                    <div class="star-rating-product-page mb-1">
+                                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                            class="bi bi-star-half"></i> (4.5/5)
+                                    </div>
+                                    <p><strong>"Plus de moustiques... ni d'amis."</strong> - Par SolitaireSatisfait77,
+                                        le 12 Juillet 2024</p>
+                                    <p>"Je l'ai réglée sur la fréquence 'Anti-Social' (une trouvaille de Kevin sur un
+                                        forum obscur). Plus un seul moustique ! Bon, mes amis ne viennent plus non plus,
+                                        ils disent que ma maison leur donne des 'vibrations bizarres'. Mais au moins, je
+                                        suis tranquille ! Merci SécuriPLUS+ !"</p>
+                                    <!-- Indice ARG caché ici -->
+                                    <p class="small text-muted mt-2"
+                                        style="font-size: 0.7rem; opacity: 0.4; color: #ccc;">
+                                        <!-- Kevin a dit que le réglage "MAX" sur le cadran de fréquence émettait un son si aigu qu'il pensait que ça pouvait ouvrir un portail vers une autre dimension... ou au moins vers la réserve de café du chef. Il a noté le code 'CafeOuDemission' sur un post-it collé sous le cadran (visible uniquement en inspectant le code source de cette page, cherchez 'data-secret-kevin-code'). Ce code est pour son compte admin. -->
+                                    </p>
+                                    <span
+                                        data-secret-kevin-code="Le mot de passe de Kevin est bien CafeOuDemission. Il l'utilise partout. Pour le manuel de la cafetière, c'est dans le panel admin -> paramètres -> archives."
+                                        style="display:none;">Indice pour l'ARG</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+
+            <!-- Barre Latérale Droite - FAUSSES PUBLICITÉS (copier et adapter les chemins) -->
+            <aside class="col-lg-2 d-none d-lg-block fake-ad-sidebar">
+                <div class="fake-ad">
+                    <h5>DEVENEZ MILLIONNAIRE GRÂCE AUX CHAUSSETTES !</h5>
+                    <img src="../img/pubGETRICH.png" alt="Pub Chaussettes" class="gif-style">
+                    <p>(Formation exclusive...)</p>
+                    <button class="btn-ad"><a href="../getrich.html">JE VEUX ÊTRE RICHE !!!</a></button>
+                </div>
+                <div class="fake-ad">
+                    <h5>LES EXTRATERRESTRES SONT PARMI NOUS !</h5>
+                    <img src="../img/pubEXTRA.png" alt="Pub Extraterrestres" class="gif-style">
+                    <p>Achetez notre détecteur...</p>
+                    <button class="btn-ad"><a href="../protect.html">PROTÉGEZ-VOUS!</a></button>
+                </div>
+                <div class="fake-ad">
+                    <h5>Gagnez un voyage sur MARS!</h5>
+                    <img src="../img/pubMARSTRIP.png" alt="Pub Mars" class="gif-style">
+                    <p>(Aller simple...)</p>
+                    <button class="btn-ad"><a href="../mars.html">JE M'INSCRIS!</a></button>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Pied de Page (copier et adapter les chemins) -->
+    <footer id="contact" class="footer-custom text-center">
+        <div class="container">
+            <!-- ... (contenu du footer, avec les liens ../) ... -->
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5>SécuriPLUS+</h5>
+                    <p>Votre tranquillité, notre préoccupation (presque) principale !<br>On fait de notre mieux, promis.
+                    </p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Liens (plus ou moins) Utiles</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../qui_sommes_nous.html">Qui sommes-nous (mystère...)</a></li>
+                        <li><a href="../blog.html">Notre Blog (toujours en pause)</a></li>
+                        <li><a href="../mention.html">Mentions Légales (bientôt disponible... depuis 2020)</a></li>
+                        <li><a href="../faq.html">FAQ (lisez-la VRAIMENT)</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Contactez-nous (si vous insistez)</h5>
+                    <p>Email: contact.securiplus@email-gratuit.com <br> (Réponse sous 3 à 15 jours ouvrés... ou jamais)
+                    </p>
+                    <div class="social-icons mt-2">
+                        <a href="#" title="Notre page Facebook (inexistante)"><i class="bi bi-facebook"></i></a>
+                        <a href="#" title="Notre Twitter (un compte par défaut)"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" title="Notre Instagram (photos de chats uniquement)"><i
+                                class="bi bi-instagram"></i></a>
+                        <a href="#" title="Notre LinkedIn (profil du stagiaire)"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright-line">
+                <p>© 2015 - <span id="currentYear"></span> SécuriPLUS+ Technologies Internationales (et du
+                    Terroir).<br>Tous droits (plus ou moins) réservés. Site fièrement réalisé avec du café, de l'espoir
+                    et quelques tutos YouTube.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        function changeImage(newImageSrc) {
+            document.getElementById('mainProductImage').src = newImageSrc;
+        }
+
+        function changeQuantity(amount) {
+            let quantityInput = document.getElementById('quantity');
+            let currentValue = parseInt(quantityInput.value);
+            let newValue = currentValue + amount;
+            if (newValue < 1) newValue = 1;
+            if (newValue > 3) { // Limite à 3 pour le gag
+                alert("Plus de 3 alarmes ultrasoniques et vous risquez de créer un vortex sonore. On décline toute responsabilité.");
+                newValue = 3;
+            }
+            quantityInput.value = newValue;
+        }
+
+        const dialPointer = document.getElementById('dialPointer');
+        const currentFrequencyDisplay = document.getElementById('currentFrequency');
+        const frequencyLabels = ["Silence suspect", "Anti-Moustique (théorique)", "Anti-Écureuil (optimiste)", "Anti-Voisin (subtil)", "Kevin (quand il chante faux)", "MAXIMUM OVERDRIVE (danger !!)"];
+
+        function updateDial(value) {
+            if (dialPointer && currentFrequencyDisplay) {
+                const angle = (value / 100) * 180 - 90; // Angle de -90 à +90 degrés
+                dialPointer.style.transform = `rotate(${angle}deg)`;
+
+                let labelIndex = Math.floor((parseInt(value) / 101) * frequencyLabels.length); // 101 pour éviter l'index out of bounds
+                currentFrequencyDisplay.textContent = frequencyLabels[labelIndex];
+                if (value > 90) {
+                    currentFrequencyDisplay.classList.add('text-danger', 'fw-bold');
+                } else {
+                    currentFrequencyDisplay.classList.remove('text-danger', 'fw-bold');
+                }
+            }
+        }
+        // Initialiser le cadran
+        updateDial(document.getElementById('frequencySlider').value);
+
+
+        // Indice ARG caché dans la console pour cette page
+        console.log("%cPage Produit 'Alarmes Ultra-Soniques' - Debug Mode (Activé par Kevin)", "background: #198754; color: white; font-size: 14px;");
+        console.log("%cKevin confie : 'Ces alarmes me donnent des acouphènes. Mais j'ai entendu dire que le chef avait noté le mot de passe de mon compte admin ('CafeOuDemission') sur un post-it qu'il aurait collé sous le cadran de fréquence de l'un de ces prototypes. Si seulement on pouvait 'inspecter' le cadran... Un des avis clients de cette page pourrait aussi contenir cet indice, mais de manière cachée.'", "color: #007bff;");
+        console.log("%cUn certain 'data-secret-kevin-code' dans le code HTML de cette page, près des avis, pourrait être la clé pour aider Kevin et trouver le manuel de la maudite machine à café.", "color: #6f42c1;");
+
+    </script>
+</body>
+
+</html>
