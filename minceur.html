@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>PERTE DE POIDS MIRACLE ! ! !</title><style>@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
+}
+
+body {
+    font-family: "Comic Sans MS", "Comic Sans", cursive, sans-serif;
+    background: linear-gradient(45deg, yellow, orange, red, fuchsia);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+    margin: 0;
+    padding: 20px;
+    color: #000;
+    /* Texte noir par défaut, sera surchargé */
+    overflow-x: hidden;
+    /* Pour éviter les barres de défilement avec les éléments qui dépassent */
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.ad-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 15px;
+    border: 10px dashed limegreen;
+    background: linear-gradient(135deg, #FF69B4, #00FFFF);
+    /* Rose bonbon à bleu électrique */
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    text-align: center;
+    position: relative;
+    /* Pour les éléments superposés */
+    overflow: hidden;
+    /* Pour les éléments qui dépassent un peu */
+}
+
+.main-title {
+    font-size: 48px;
+    font-weight: bold;
+    color: yellow;
+    text-shadow: 3px 3px 0px #FF00FF, -3px -3px 0px #00FF00;
+    /* Ombre portée épaisse et criarde */
+    margin-bottom: 20px;
+    animation: pulse 1.5s infinite;
+}
+
+.comparison-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    /* Pour que les textes sous les images soient alignés */
+    margin-bottom: 30px;
+    gap: 10px;
+}
+
+.before-after-box {
+    width: 45%;
+    border: 3px solid #FF00FF;
+    /* Rose shocking */
+    padding: 10px;
+    background-color: rgba(255, 255, 0, 0.8);
+    /* Jaune semi-transparent */
+}
+
+.before-after-box h2 {
+    font-size: 28px;
+    color: #FF6347;
+    /* Tomato */
+    margin-top: 0;
+    text-decoration: underline wavy blue;
+}
+
+.silhouette {
+    width: 100%;
+    height: 200px;
+    /* Hauteur fixe pour les silhouettes */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    /* Pour les emojis/dessins grossiers */
+    margin-bottom: 10px;
+}
+
+.silhouette-avant {
+    background-color: #A9A9A9;
+    /* Gris foncé */
+    border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
+    /* Forme de patate */
+    color: #333;
+    font-size: 50px;
+}
+
+.silhouette-apres {
+    background-color: lightgreen;
+    /* Vert clair pour le succès */
+    position: relative;
+    /* Pour les étoiles */
+    color: #006400;
+    /* Vert foncé */
+    /* Tentative de forme musclée très grossière */
+    clip-path: polygon(50% 0%, 65% 20%, 80% 15%, 75% 40%, 90% 45%, 70% 60%, 75% 100%, 25% 100%, 30% 60%, 10% 45%, 25% 40%, 20% 15%, 35% 20%);
+}
+
+.silhouette-apres .sparkle {
+    position: absolute;
+    font-size: 20px;
+    color: yellow;
+    animation: blink 1s infinite, spin 5s linear infinite;
+    text-shadow: 0 0 5px gold, 0 0 10px gold;
+}
+
+.sparkle1 {
+    top: 5%;
+    left: 10%;
+}
+
+.sparkle2 {
+    top: 20%;
+    right: 5%;
+    animation-delay: 0.2s;
+}
+
+.sparkle3 {
+    bottom: 10%;
+    left: 20%;
+    animation-delay: 0.4s;
+}
+
+.sparkle4 {
+    bottom: 25%;
+    right: 15%;
+    animation-delay: 0.6s;
+}
+
+
+.product-section {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: #FFFF00;
+    /* Jaune pétant */
+    border: 5px groove #FF1493;
+    /* Rose shocking */
+    display: inline-block;
+    /* Pour que ça ne prenne pas toute la largeur */
+    position: relative;
+    /* Pour le concombre */
+}
+
+.product-box {
+    background-color: lime;
+    padding: 10px;
+    border: 3px dotted #FF00FF;
+    /* Magenta */
+}
+
+.product-name {
+    font-size: 32px;
+    font-weight: bold;
+    color: #0000CD;
+    /* Bleu moyen */
+    margin-bottom: 10px;
+    text-shadow: 2px 2px white, -2px -2px white;
+}
+
+.product-claims p {
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+    margin: 5px 0;
+    background-color: yellow;
+    padding: 3px;
+    border: 1px dashed blue;
+}
+
+.slogan-banner {
+    position: absolute;
+    padding: 5px 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    transform-origin: center;
+}
+
+.slogan1 {
+    top: 10px;
+    left: -30px;
+    /* Dépasse un peu */
+    background-color: red;
+    transform: rotate(-15deg);
+    animation: shake 2s infinite;
+    border: 2px outset yellow;
+}
+
+.slogan2 {
+    bottom: 80px;
+    /* Au-dessus du concombre */
+    right: -20px;
+    /* Dépasse un peu */
+    background-color: blue;
+    transform: rotate(10deg) scale(1.1);
+    animation: pulse 1s infinite alternate;
+    border: 2px outset lime;
+}
+
+.slogan3 {
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%) rotate(5deg) scale(1.2);
+    background-color: orange;
+    color: black;
+    text-shadow: 1px 1px 1px white;
+    padding: 10px 20px;
+    font-size: 30px;
+    z-index: 10;
+    /* Au-dessus des autres éléments */
+    border: 3px double purple;
+    animation: blink 0.8s infinite;
+}
+
+.cucumber {
+    font-size: 80px;
+    /* Gros concombre */
+    position: absolute;
+    bottom: -30px;
+    /* Dépasse en bas du produit */
+    left: 10px;
+    transform: rotate(-20deg);
+    animation: spin 10s linear infinite alternate;
+}
+
+.cucumber-eyes {
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    font-size: 15px;
+    color: white;
+    background-color: black;
+    border-radius: 50%;
+    padding: 2px;
+}
+
+.cucumber-eye-left {
+    left: 20px;
+}
+
+.cucumber-eye-right {
+    left: 45px;
+}
+
+.cucumber-smile {
+    position: absolute;
+    top: 40px;
+    left: 25px;
+    width: 30px;
+    height: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border: 2px solid black;
+    border-top: none;
+    background-color: pink;
+}
+
+
+.disclaimer {
+    font-size: 10px;
+    color: #333;
+    margin-top: 30px;
+    background: #ccc;
+    padding: 5px;
+    border: 1px solid #999;
+}
+
+.free-offer {
+    font-size: 36px;
+    color: #FFD700;
+    /* Or */
+    background-color: #FF4500;
+    /* OrangeRed */
+    padding: 10px 20px;
+    border: 5px ridge #008000;
+    /* Vert */
+    display: inline-block;
+    margin-top: 20px;
+    animation: pulse 0.7s infinite;
+    text-shadow: 2px 2px #000;
+}
+
+</style></head><body><div class="ad-container"><h1 class="main-title">INCROYABLE TRANSFORMATION !</h1><div class="slogan-banner slogan1">RÉSULTATS CHOC !</div><div class="slogan-banner slogan2">OFFRE LIMITÉE !</div><div class="slogan-banner slogan3">100% GARANTI !*</div><div class="comparison-section"><div class="before-after-box"><h2>AVANT</h2><div class="silhouette silhouette-avant">😞</div><p style="color: #555; font-style: italic;">Visiblement rembourrée,
+expression triste et désabusée...</p></div><div class="before-after-box"><h2>APRÈS !</h2><div class="silhouette silhouette-apres">💪🤩 <span class="sparkle sparkle1">✨</span><span class="sparkle sparkle2">⭐</span><span class="sparkle sparkle3">🌟</span><span class="sparkle sparkle4">✨</span></div><p style="color: green; font-weight: bold;">Incroyablement mince,
+musclée,
+sourire béat !</p></div></div><div class="product-section"><div class="product-box"><h3 class="product-name">SlimFX Pro Ultra™</h3><div class="product-claims"><p>PERTE MAX !</p><p>-20KG EN 1 SEMAINE !</p><p>RÉSULTATS INSTANTANÉS</p></div></div><div class="cucumber">🥒 <div class="cucumber-eyes cucumber-eye-left">👀</div><div class="cucumber-eyes cucumber-eye-right">👀</div><div class="cucumber-smile"></div></div></div><div class="free-offer">CLIQUEZ ICI ! ! C'EST GRATUIT** !!!</div>
+
+<p class="disclaimer">*Ces déclarations n'ont pas été évaluées par l' autorité compétente. Ce produit n'est pas destiné à diagnostiquer, traiter, guérir ou prévenir une quelconque maladie. Les résultats peuvent varier et ne sont pas garantis. Consultez votre médecin avant d' utiliser ce produit ou tout autre programme de perte de poids. L'utilisation de concombres géants est à vos propres risques.
+ **Gratuit sous conditions de souscription à 17 abonnements mensuels et à l'achat d' une encyclopédie en 48 volumes. </p></div></body></html>

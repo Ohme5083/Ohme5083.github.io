@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔮 VOTRE DESTIN RÉVÉLÉ! Horoscope GRATUIT! 🔮</title>
+    <style>
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 15px 5px gold; }
+            50% { transform: scale(1.05); box-shadow: 0 0 25px 10px yellow; }
+            100% { transform: scale(1); box-shadow: 0 0 15px 5px gold; }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes slowSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes nebulaShift {
+            0%{background-position:0% 50%}
+            50%{background-position:100% 50%}
+            100%{background-position:0% 50%}
+        }
+
+        body {
+            font-family: "Papyrus", "Comic Sans MS", cursive, fantasy;
+            background: linear-gradient(120deg, #4B0082, #8A2BE2, #FF00FF, #00CED1, #32CD32, #FF8C00); /* Indigo, BlueViolet, Magenta, DarkTurquoise, LimeGreen, DarkOrange */
+            background-size: 180% 180%;
+            animation: nebulaShift 20s ease infinite;
+            margin: 0;
+            padding: 20px;
+            color: #E0E0E0; /* Gris clair par défaut */
+            overflow-x: hidden;
+        }
+
+        .ad-container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 8px ridge #FFD700; /* Or */
+            background-color: rgba(26, 2, 46, 0.85); /* Violet très sombre semi-transparent */
+            box-shadow: 0 0 20px 10px #8A2BE2; /* Ombre violette diffuse */
+            text-align: center;
+            position: relative;
+        }
+
+        .main-title {
+            font-size: 38px;
+            font-weight: bold;
+            color: #FFFF00; /* Jaune vif */
+            text-shadow: 2px 2px 0px #C71585, /* MediumVioletRed */
+                         -2px -2px 0px #00FA9A, /* MediumSpringGreen */
+                         0 0 15px #FF69B4; /* HotPink glow */
+            margin-bottom: 25px;
+            animation: blink 1.5s infinite;
+            letter-spacing: 2px;
+        }
+
+        .fortune-teller-area {
+            position: relative;
+            width: 300px; /* Taille de la zone centrale */
+            height: 300px;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .crystal-ball {
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle at 30% 30%, rgba(220, 220, 255, 0.7), rgba(128, 0, 128, 0.9) 70%, rgba(50,0,50,1)); /* Blanc laiteux à violet sombre */
+            border-radius: 50%;
+            border: 5px solid #C0C0C0; /* Argent */
+            box-shadow: 0 0 20px 5px #AFEEEE, /* PaleTurquoise glow */
+                        inset 0 0 15px rgba(255,255,255,0.3); /* Reflet interne */
+            position: relative;
+            animation: pulse 3s infinite ease-in-out;
+            overflow: hidden; /* Pour la fumée */
+        }
+        
+        .crystal-ball::before { /* Fumée intérieure */
+            content: "";
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            top: -25%;
+            left: -25%;
+            background: radial-gradient(circle, rgba(255, 105, 180, 0.3) 10%, rgba(0, 255, 255, 0.2) 40%, transparent 70%);
+            animation: slowSpin 15s linear infinite alternate;
+            opacity: 0.7;
+        }
+
+        .seer-hands {
+            position: absolute;
+            bottom: -20px; /* En dessous de la boule */
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .hand {
+            font-size: 50px; /* Emoji de main */
+            transform: translateY(10px);
+        }
+        .hand.left { transform: translateY(10px) rotate(-15deg) scaleX(-1); }
+        .hand.right { transform: translateY(10px) rotate(15deg); }
+        /* Simuler des ongles longs et peints - difficile sans SVG/images, on utilise l'emoji */
+        /* Pour des faux ongles, on pourrait ajouter des petits divs positionnés au bout des "doigts" emoji mais ce serait complexe */
+
+        .zodiac-symbol {
+            position: absolute;
+            font-size: 30px;
+            color: #FFD700; /* Or */
+            text-shadow: 0 0 5px #FFFFFF, 0 0 10px #FFFF00; /* Aura jaune/blanche */
+            animation: float 3s infinite ease-in-out, blink 2s infinite alternate;
+            opacity: 0.8;
+        }
+        .aries { top: 10%; left: 10%; animation-delay: 0.2s; } /* ♈ */
+        .taurus { top: 20%; right: 5%; animation-delay: 0.4s; } /* ♉ */
+        .gemini { bottom: 15%; left: 15%; animation-delay: 0.6s; } /* ♊ */
+        .cancer { bottom: 5%; right: 20%; animation-delay: 0.8s; } /* ♋ */
+        .leo { top: 50%; left: 2%; animation-delay: 1s;} /* ♌ */
+        .virgo { top: 60%; right: 2%; animation-delay: 1.2s;} /* ♍ */
+
+
+        .slogan-banner {
+            margin: 15px 5%;
+            padding: 8px 12px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #000000; /* Texte noir pour contraste */
+            background: linear-gradient(45deg, #FFD700, #FFA500); /* Dégradé Or à Orange */
+            border: 3px outset #C0C0C0; /* Argent */
+            text-shadow: 1px 1px 1px #FFFFFF;
+            transform: rotate(-2deg); /* Légèrement de travers */
+        }
+        .slogan-banner.alt {
+            transform: rotate(2deg);
+            background: linear-gradient(45deg, #DA70D6, #BA55D3); /* Orchidée à MediumOrchid */
+            color: #FFFFE0; /* Jaune très pâle */
+            text-shadow: 1px 1px 1px #4B0082;
+        }
+
+        .keychain-section {
+            margin-top: 30px;
+            padding: 10px;
+            background-color: rgba(0,0,0,0.3);
+            border: 2px dashed #ADFF2F; /* Vert Jaune */
+            display: inline-block;
+        }
+        
+        .keychain {
+            width: 120px;
+            height: 50px;
+            background-color: #FF4500; /* Orange fluo (OrangeRed) */
+            border: 3px solid #000000;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            box-shadow: 3px 3px 5px rgba(0,0,0,0.5);
+            transform: rotate(5deg); /* Un peu de travers */
+        }
+
+        .keychain-text {
+            font-family: Arial, sans-serif; /* Police plus "industrielle" pour le porte-clé */
+            font-size: 18px;
+            font-weight: bold;
+            color: #FFFF00; /* Jaune canari */
+            text-shadow: 1px 1px #000;
+            transform: skewX(-10deg); /* Un peu déformé */
+            letter-spacing: -1px; /* Lettres un peu serrées */
+        }
+        
+        .keychain-offer-text {
+            font-size: 18px;
+            color: #ADFF2F; /* Vert Jaune */
+            margin-top: 10px;
+            font-style: italic;
+            animation: blink 1s infinite;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin-top: 30px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #FFFFFF;
+            background: linear-gradient(180deg, #800080, #4B0082); /* Violet à Indigo */
+            border: 5px groove #FFD700; /* Or */
+            border-radius: 10px;
+            text-shadow: 0 0 10px #FFFFFF, 2px 2px 3px #000000;
+            box-shadow: 5px 5px 10px rgba(0,0,0,0.7);
+            cursor: pointer;
+            animation: pulse 2s infinite;
+        }
+        .cta-button:hover {
+            background: linear-gradient(180deg, #9932CC, #8A2BE2); /* MediumOrchid à BlueViolet */
+        }
+
+        .disclaimer {
+            font-size: 9px;
+            color: #A9A9A9; /* Gris foncé */
+            margin-top: 25px;
+            font-family: "Times New Roman", serif;
+            line-height: 1.2;
+            background: rgba(0,0,0,0.2);
+            padding: 5px;
+            border-top: 1px dotted #555;
+        }
+
+        /* Ajout d'étoiles filantes simplistes */
+        .shooting-star {
+            position: absolute;
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(to left, yellow, transparent);
+            opacity: 0;
+            animation: shoot 3s linear infinite;
+        }
+        .star1 { top: 15%; right: -100px; animation-delay: 1s; transform: rotate(-20deg);}
+        .star2 { top: 60%; right: -100px; animation-delay: 2.5s; transform: rotate(-15deg);}
+
+        @keyframes shoot {
+            0% { transform: translateX(0) rotate(-20deg); opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { transform: translateX(-800px) rotate(-20deg); opacity: 0; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="ad-container">
+        <div class="shooting-star star1"></div>
+        <div class="shooting-star star2"></div>
+
+        <h1 class="main-title">🔮 VOTRE DESTIN RÉVÉLÉ ! 🔮</h1>
+
+        <div class="fortune-teller-area">
+            <div class="crystal-ball"></div>
+            <div class="seer-hands">
+                <span class="hand left">💅</span> <!-- Emoji main avec vernis -->
+                <span class="hand right">💅</span>
+            </div>
+            <!-- Symboles du zodiaque flottants -->
+            <div class="zodiac-symbol aries">♈</div>
+            <div class="zodiac-symbol taurus">♉</div>
+            <div class="zodiac-symbol gemini">♊</div>
+            <div class="zodiac-symbol cancer">♋</div>
+            <div class="zodiac-symbol leo">♌</div>
+            <div class="zodiac-symbol virgo">♍</div>
+        </div>
+
+        <div class="slogan-banner">
+            ✨ AMOUR ? ARGENT ? SANTÉ ? ✨ TOUT SERA DÉVOILÉ !
+        </div>
+        
+        <div class="keychain-section">
+            <p class="keychain-offer-text">🎁 ET EN PLUS... UN PORTE-CLÉS "SécuriPLUS+" OFFERT* ! 🎁</p>
+            <div class="keychain">
+                <span class="keychain-text">SécuriPLUS+</span>
+            </div>
+        </div>
+
+        <div class="slogan-banner alt">
+            RÉVÉLATIONS INCROYABLES GARANTIES** ! NE RATEZ PAS ÇA !
+        </div>
+
+        <button class="cta-button">CLIQUEZ VITE POUR CONNAÎTRE VOTRE AVENIR !</button>
+
+        <p class="disclaimer">
+            *Porte-clés offert pour toute consultation "Premium Destin Complet" d'une valeur de 99,99€ TTC. Offre non cumulable, dans la limite des stocks disponibles (soit 1 porte-clés). Photos non contractuelles. Le porte-clés n'a aucune propriété magique.
+            **Les révélations sont générées aléatoirement par notre Algorithme Cosmique Certifié (ACC™) et sont fournies à titre de divertissement uniquement. Nous ne sommes pas responsables des décisions prises suite à nos prédictions. L'abus d'horoscope est dangereux pour le portefeuille.
+            La voyante sur la photo est une actrice. La boule de cristal est en plastique recyclé.
+        </p>
+    </div>
+
+</body>
+</html>

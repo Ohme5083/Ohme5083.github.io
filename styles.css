@@ -1,0 +1,506 @@
+/* Styles "subtilement" (ou pas) ratés et décalés */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    /* Classique, un peu ennuyeux */
+    overflow-x: hidden;
+    /* Pour éviter le scroll horizontal si les pubs dépassent un peu */
+}
+
+.navbar-custom {
+    background-color: #EAEAEA;
+    /* Un gris un peu daté */
+    border-bottom: 3px solid #FFD700;
+    /* Or, un peu trop clinquant pour du pro */
+}
+
+.logo-text {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.9rem;
+    font-weight: bold;
+    color: #003366;
+    /* Bleu corporate classique */
+}
+
+.logo-plus {
+    color: #FF0000;
+    /* Rouge vif, le "+" qui déborde */
+    font-size: 2.5rem;
+    vertical-align: middle;
+    margin-left: -5px;
+    /* Pour un effet "collé à la va-vite" */
+    font-weight: bolder;
+    text-shadow: 1px 1px 2px #000000;
+    /* Ombre un peu grossière */
+}
+
+.hero-carousel .carousel-item {
+    height: 550px;
+    /* Hauteur fixe, peut causer des pbs d'ajustement d'image */
+}
+
+.hero-carousel .carousel-item img {
+    object-fit: cover;
+    /* Pour remplir, même si ça coupe l'image */
+    filter: brightness(0.7) contrast(1.1);
+    /* Effet un peu "amateur" sur l'image */
+}
+
+.hero-carousel .carousel-caption h1 {
+    font-size: 3.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    /* MAJUSCULES PARTOUT */
+    color: #FFFF00;
+    /* Jaune pétant sur fond sombre */
+    text-shadow: 2px 2px 5px #000;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.hero-carousel .carousel-caption p {
+    font-size: 1.3rem;
+    font-family: 'Comic Sans MS', cursive;
+    /* OUPS ! */
+}
+
+.btn-hero-cta {
+    font-size: 1.7rem;
+    padding: 15px 35px;
+    font-weight: bold;
+    border: 3px outset #FFA500;
+    /* Orange, avec un effet de relief un peu kitsch */
+    animation: pulse-cta 2s infinite ease-in-out;
+}
+
+@keyframes pulse-cta {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 165, 0, 0.7);
+    }
+
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 10px 20px rgba(255, 165, 0, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 165, 0, 0);
+    }
+}
+
+.btn-hero-cta:hover {
+    animation: shake-cta 0.4s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake-cta {
+    0% {
+        transform: translate(1px, 1px) rotate(0deg) scale(1.05);
+    }
+
+    25% {
+        transform: translate(-1px, -2px) rotate(-0.5deg) scale(1.05);
+    }
+
+    50% {
+        transform: translate(-2px, 0px) rotate(0.5deg) scale(1.05);
+    }
+
+    75% {
+        transform: translate(1px, 2px) rotate(0deg) scale(1.05);
+    }
+
+    100% {
+        transform: translate(1px, -1px) rotate(-0.5deg) scale(1.05);
+    }
+}
+
+/* Fausses Publicités */
+.fake-ad-sidebar {
+    padding-top: 20px;
+    /* Pour ne pas coller à la navbar */
+}
+
+.fake-ad {
+    border: 3px dashed #FF1493;
+    /* Rose bonbon */
+    padding: 15px;
+    margin-bottom: 25px;
+    text-align: center;
+    background-color: #FFFFE0;
+    /* Jaune très pâle */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    /* Ombre portée un peu grossière */
+}
+
+.fake-ad h5 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #8B0000;
+    /* Rouge foncé */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    /* Un peu espacé pour faire "important" */
+}
+
+.fake-ad p {
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', cursive;
+    font-size: 0.95em;
+    color: #006400;
+    /* Vert foncé pour contraster */
+}
+
+.fake-ad img.gif-style {
+    width: 100%;
+    max-width: 180px;
+    /* Pour ne pas prendre toute la largeur */
+    height: auto;
+    border: 2px solid black;
+    margin-bottom: 10px;
+    image-rendering: pixelated;
+    /* Pour simuler un GIF pixelisé */
+    animation: blink-image 1s infinite alternate;
+}
+
+@keyframes blink-image {
+    0% {
+        opacity: 1;
+    }
+
+    49% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.2;
+    }
+
+    99% {
+        opacity: 0.2;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.fake-ad .btn-ad {
+    background-color: #32CD32;
+    /* Vert pomme */
+    color: white;
+    border: 2px outset #008000;
+    /* Vert plus foncé */
+    padding: 8px 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Arial Black', Gadget, sans-serif;
+    cursor: pointer;
+    /* Pour bien montrer que c'est cliquable */
+}
+
+.fake-ad .btn-ad:hover {
+    background-color: #228B22;
+    /* Vert forêt */
+}
+
+/* Section Catégories et Produits */
+.section-title-custom {
+    font-family: 'Georgia', serif;
+    /* Une police sérieuse, mais un peu datée pour des titres web modernes */
+    color: #2c3e50;
+    /* Bleu nuit */
+    border-bottom: 3px dotted #fd7e14;
+    /* Orange Bootstrap, en pointillé c'est "original" */
+    padding-bottom: 10px;
+    margin-bottom: 30px !important;
+}
+
+.product-card-custom img {
+    border: 1px solid #ddd;
+    padding: 5px;
+    /* Pour simuler un mauvais détourage/marge */
+    background-color: #f9f9f9;
+    /* Fond légèrement différent */
+    max-height: 180px;
+    object-fit: scale-down;
+    /* Peut rendre l'image petite si elle est grande */
+}
+
+.product-card-custom .card-title {
+    font-family: 'Courier New', Courier, monospace;
+    /* Très technique... ou pas */
+    color: #007bff;
+}
+
+.product-card-custom .old-price {
+    text-decoration: line-through;
+    color: #dc3545;
+    /* Rouge Bootstrap */
+    font-size: 0.9em;
+}
+
+.product-card-custom .new-price {
+    font-weight: bold;
+    color: #28a745;
+    /* Vert Bootstrap */
+    font-size: 1.2em;
+}
+
+.star-rating-cheap i {
+    color: #FFC107;
+    /* Jaune Bootstrap */
+    text-shadow: 1px 1px 1px #ccc;
+    /* Ombre légère pour effet "cheap" */
+}
+
+.star-rating-cheap .bi-star-half {
+    /* La demi-étoile est souvent mal gérée */
+    opacity: 0.7;
+}
+
+
+/* Section Pourquoi Nous */
+.why-us-custom .icon-box {
+    padding: 20px;
+    border: 1px solid #eee;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    /* Dégradé subtil mais un peu cheap */
+}
+
+.why-us-custom .icon-box i {
+    font-size: 3rem;
+    color: #6c757d;
+    /* Gris Bootstrap, pas très excitant */
+    margin-bottom: 15px;
+    display: block;
+    transition: transform 0.3s ease-in-out;
+}
+
+.why-us-custom .icon-box:hover i {
+    transform: rotate(15deg) scale(1.1);
+    /* Animation un peu "too much" */
+}
+
+/* Footer */
+.footer-custom {
+    background-color: #333;
+    /* Fond sombre classique */
+    color: #bbb;
+    /* Texte gris clair */
+    padding-top: 30px;
+    padding-bottom: 10px;
+    font-size: 0.9em;
+}
+
+.footer-custom h5 {
+    color: #FFD700;
+    /* Or, pour les titres */
+    font-family: 'Georgia', serif;
+}
+
+.footer-custom a {
+    color: #00BFFF;
+    /* Bleu ciel, pas très corporate */
+    text-decoration: none;
+}
+
+.footer-custom a:hover {
+    color: #FFFFFF;
+    text-decoration: underline wavy #FFD700;
+    /* Soulignement ondulé, original ! */
+}
+
+.footer-custom .social-icons i {
+    font-size: 1.8rem;
+    margin: 0 10px;
+    color: #E0E0E0;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.footer-custom .social-icons i:hover {
+    color: #FFD700;
+    transform: translateY(-3px);
+    /* Petit effet au survol */
+}
+
+.copyright-line {
+    border-top: 1px dotted #555;
+    padding-top: 15px;
+    margin-top: 20px;
+    font-style: italic;
+    color: #888;
+}
+
+/* Styles Globaux inspirés de l'index */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f0f2f5;
+    /* Un gris clair un peu "application web" */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Style du Logo SécuriPLUS+ (adapté de l'index) */
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo-text {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2.8rem;
+    /* Un peu plus grand pour la page de login */
+    font-weight: bold;
+    color: #003366;
+    /* Bleu corporate classique */
+}
+
+.logo-plus {
+    color: #FF0000;
+    /* Rouge vif, le "+" qui déborde */
+    font-size: 3.2rem;
+    /* Encore plus grand */
+    vertical-align: middle;
+    margin-left: -8px;
+    /* Pour un effet "collé à la va-vite" plus prononcé */
+    font-weight: bolder;
+    text-shadow: 1px 1px 3px #555555;
+    /* Ombre un peu grossière */
+}
+
+/* Titre de la page de connexion */
+.login-title {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #003366;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 2.2rem;
+    text-shadow: 1px 1px 2px #cccccc;
+}
+
+/* Carte de Connexion "Cheap Chic" */
+.login-card-custom {
+    background-color: #FFFFE0;
+    /* Jaune très pâle, comme les fausses pubs */
+    border: 3px dashed #FF1493;
+    /* Rose bonbon, pour le côté "urgent" et décalé */
+    border-radius: 10px;
+    /* Bordures arrondies mais pas trop */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+    /* Ombre plus prononcée */
+}
+
+.login-card-custom .card-body {
+    padding: 2rem;
+    /* Plus d'espace intérieur */
+}
+
+/* Champs de formulaire */
+.form-control:focus {
+    border-color: #FFD700;
+    /* Or à la focus */
+    box-shadow: 0 0 0 0.25rem rgba(255, 215, 0, 0.3);
+    /* Ombre or */
+}
+
+/* Placeholder avec une touche d'humour */
+.form-control::placeholder {
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', cursive;
+    color: #888;
+    font-size: 0.9em;
+}
+
+/* Case à cocher */
+.form-check-label {
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', cursive;
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* Bouton de Connexion (inspiré du btn-hero-cta) */
+.btn-login-cta {
+    font-family: 'Arial Black', Gadget, sans-serif;
+    font-size: 1.4rem;
+    padding: 12px 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #003366;
+    /* Texte bleu sur fond jaune */
+    background-color: #FFD700;
+    /* Jaune vif (Or) */
+    border: 3px outset #FF0000;
+    /* Bordure rouge en relief */
+    transition: transform 0.1s ease-out;
+    /* Pour l'effet de clic */
+}
+
+.btn-login-cta:hover {
+    color: #002244;
+    /* Bleu plus foncé au survol */
+    background-color: #FFC107;
+    /* Jaune un peu plus foncé */
+    animation: shake-cta-login 0.4s;
+    /* Animation saccadée au survol */
+    animation-iteration-count: infinite;
+}
+
+.btn-login-cta:active {
+    transform: scale(0.98) translateY(1px);
+    /* Effet d'enfoncement */
+    border-style: inset;
+}
+
+@keyframes shake-cta-login {
+
+    /* Légère adaptation de l'animation de l'index */
+    0% {
+        transform: translate(1px, 0px) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(-1px, 0px) rotate(-0.2deg);
+    }
+
+    50% {
+        transform: translate(0px, 1px) rotate(0.2deg);
+    }
+
+    75% {
+        transform: translate(1px, -1px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-1px, 0px) rotate(0.2deg);
+    }
+}
+
+/* Liens sous le formulaire */
+.login-links a {
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', cursive;
+    font-size: 0.95em;
+    color: #007bff;
+    /* Bleu Bootstrap classique pour les liens */
+    text-decoration: none;
+}
+
+.login-links a:hover {
+    color: #0056b3;
+    text-decoration: underline wavy #FFD700;
+    /* Soulignement ondulé or, comme le footer de l'index */
+}
+
+/* Pied de Page Simplifié */
+.footer-login-custom {
+    background-color: #333;
+    color: #bbb;
+    padding: 15px 0;
+    font-size: 0.85em;
+    margin-top: auto;
+    /* Pour le coller en bas */
+}
+
+.footer-login-custom p {
+    margin-bottom: 0;
+    font-style: italic;
+}

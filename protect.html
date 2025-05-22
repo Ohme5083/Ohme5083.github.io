@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚨 ALERTE ALIEN! Protégez-vous MAINTENANT! 🚨</title>
+    <style>
+        @font-face {
+            font-family: 'StencilLike';
+            /* Pour simuler une police stencil */
+            src: local('Impact'), local('Arial Black'), sans-serif;
+            /* Fallback */
+        }
+
+        @font-face {
+            font-family: 'TypewriterIsh';
+            /* Pour simuler machine à écrire */
+            src: local('Courier New'), local('Lucida Console'), monospace;
+        }
+
+        @keyframes blinkRed {
+
+            0%,
+            100% {
+                background-color: red;
+                box-shadow: 0 0 10px red;
+            }
+
+            50% {
+                background-color: darkred;
+                box-shadow: 0 0 5px darkred;
+            }
+        }
+
+        @keyframes blinkGreen {
+
+            0%,
+            100% {
+                background-color: lime;
+                box-shadow: 0 0 10px lime;
+            }
+
+            50% {
+                background-color: green;
+                box-shadow: 0 0 5px green;
+            }
+        }
+
+        @keyframes blinkYellow {
+
+            0%,
+            100% {
+                background-color: yellow;
+                box-shadow: 0 0 10px yellow;
+            }
+
+            50% {
+                background-color: gold;
+                box-shadow: 0 0 5px gold;
+            }
+        }
+
+        @keyframes ufoHover {
+            0% {
+                transform: translateY(0px) rotate(-2deg);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(2deg);
+            }
+
+            100% {
+                transform: translateY(0px) rotate(-2deg);
+            }
+        }
+
+        @keyframes beamFlicker {
+
+            0%,
+            100% {
+                opacity: 0.7;
+            }
+
+            50% {
+                opacity: 0.4;
+            }
+        }
+
+        @keyframes alienEyesGlow {
+            0% {
+                box-shadow: 0 0 8px 3px #00FF00, inset 0 0 3px #55FF55;
+            }
+
+            50% {
+                box-shadow: 0 0 12px 5px #33FF33, inset 0 0 5px #AAFFAA;
+            }
+
+            100% {
+                box-shadow: 0 0 8px 3px #00FF00, inset 0 0 3px #55FF55;
+            }
+        }
+
+
+        body {
+            font-family: "TypewriterIsh", "Courier New", monospace;
+            background-color: #00001a;
+            /* Bleu nuit très sombre */
+            background-image:
+                radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.2) 1px, transparent 0),
+                /* Petites étoiles */
+                radial-gradient(circle at 10px 10px, rgba(200, 200, 255, 0.1) 1px, transparent 0);
+            background-size: 15px 15px, 30px 30px;
+            /* Densité des étoiles */
+            margin: 0;
+            padding: 15px;
+            color: #CCCCCC;
+            /* Gris clair pour le texte par défaut */
+            overflow-x: hidden;
+        }
+
+        .conspiracy-ad-container {
+            max-width: 750px;
+            margin: 20px auto;
+            padding: 10px;
+            border: 5px dashed #FF0000;
+            /* Rouge danger */
+            background: rgba(10, 10, 30, 0.85);
+            /* Fond sombre semi-transparent */
+            box-shadow: 0 0 20px 5px rgba(255, 0, 0, 0.5);
+            /* Lueur rouge */
+            text-align: center;
+            position: relative;
+        }
+
+        .main-alert-banner {
+            font-family: "StencilLike", Impact, sans-serif;
+            font-size: 38px;
+            font-weight: bold;
+            color: red;
+            text-shadow: 2px 2px 0px #660000,
+                /* Ombre rouge foncé */
+                0 0 10px yellow;
+            /* Lueur jaune "danger" */
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: rgba(50, 0, 0, 0.7);
+            border: 2px solid yellow;
+            text-transform: uppercase;
+            animation: blinkRed 1s infinite steps(1, end);
+            /* Clignotement du fond */
+        }
+
+        .scene-container {
+            position: relative;
+            height: 300px;
+            /* Espace pour la scène */
+            background-color: #050510;
+            /* Fond encore plus sombre pour la scène */
+            border: 1px solid #333;
+            margin-bottom: 20px;
+            overflow: hidden;
+            /* Pour les éléments qui dépassent */
+        }
+
+        /* Soucoupe Volante */
+        .ufo {
+            position: absolute;
+            top: 20px;
+            left: 60%;
+            width: 120px;
+            height: 40px;
+            background-color: #777;
+            border-radius: 50% / 100% 100% 0 0;
+            /* Demi-ellipse pour le haut */
+            box-shadow: 0 -5px 10px #AAA;
+            animation: ufoHover 5s infinite ease-in-out;
+        }
+
+        .ufo::before {
+            /* Dôme */
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 35px;
+            width: 50px;
+            height: 25px;
+            background-color: #999;
+            border-radius: 50%;
+            box-shadow: inset 0 0 5px #555;
+        }
+
+        .ufo-light {
+            position: absolute;
+            bottom: 5px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: blinkRed 0.5s infinite;
+        }
+
+        .ufo-light.l1 {
+            left: 20px;
+        }
+
+        .ufo-light.l2 {
+            left: 55px;
+            animation-delay: 0.2s;
+            background-color: yellow;
+            animation-name: blinkYellow;
+        }
+
+        .ufo-light.l3 {
+            right: 20px;
+            animation-delay: 0.4s;
+        }
+
+        .ufo-beam {
+            position: absolute;
+            top: 50px;
+            left: calc(60% + 50px);
+            /* Sous le centre de l'OVNI */
+            width: 30px;
+            height: 150px;
+            /* Longueur du faisceau */
+            background: linear-gradient(to bottom, rgba(173, 216, 230, 0.1), rgba(173, 216, 230, 0.5) 50%, rgba(173, 216, 230, 0.1));
+            /* Bleu clair transparent */
+            clip-path: polygon(20% 0, 80% 0, 100% 100%, 0% 100%);
+            animation: beamFlicker 0.3s infinite;
+            transform-origin: top center;
+        }
+
+        /* Alien caché */
+        .hidden-alien-eyes {
+            position: absolute;
+            bottom: 30px;
+            left: 15%;
+            width: 15px;
+            height: 20px;
+            background-color: #000;
+            border-radius: 50% 50% 40% 40% / 60% 60% 50% 50%;
+            /* Forme d'oeil d'alien */
+            margin: 0 3px;
+            display: inline-block;
+            animation: alienEyesGlow 3s infinite;
+        }
+
+        .alien-tree-silhouette {
+            /* Pour simuler un arbre */
+            position: absolute;
+            bottom: 0;
+            left: 10%;
+            width: 60px;
+            height: 100px;
+            background-color: #1a1a00;
+            /* Vert très sombre */
+            clip-path: polygon(50% 0%, 60% 30%, 100% 35%, 70% 60%, 85% 100%, 15% 100%, 30% 60%, 0% 35%, 40% 30%);
+        }
+
+
+        /* Le Gadget */
+        .gadget-section {
+            margin: 20px auto;
+            padding: 15px;
+            background-color: rgba(50, 50, 50, 0.7);
+            border: 3px solid #888;
+            width: 250px;
+        }
+
+        .gadget-name {
+            font-size: 24px;
+            color: yellow;
+            font-family: "StencilLike", Impact, sans-serif;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px #000;
+        }
+
+        .detector-case {
+            width: 200px;
+            height: 150px;
+            background-color: #333;
+            /* Gris militaire */
+            border: 2px solid #111;
+            border-radius: 5px;
+            margin: 0 auto;
+            padding: 10px;
+            position: relative;
+            box-shadow: inset 0 0 10px #000;
+        }
+
+        .detector-antenna {
+            position: absolute;
+            top: -70px;
+            left: 90px;
+            width: 10px;
+            height: 80px;
+            background-color: #999;
+            /* Métal */
+            border-radius: 5px 5px 0 0;
+            transform: rotate(15deg);
+        }
+
+        .detector-antenna::after {
+            /* Boule au bout */
+            content: "";
+            position: absolute;
+            top: -8px;
+            left: -2px;
+            width: 14px;
+            height: 14px;
+            background-color: red;
+            border-radius: 50%;
+        }
+
+        .detector-led {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 5px;
+            border: 1px solid black;
+        }
+
+        .led-red {
+            animation: blinkRed 0.7s infinite;
+        }
+
+        .led-green {
+            animation: blinkGreen 1.2s infinite;
+        }
+
+        .led-yellow {
+            animation: blinkYellow 0.9s infinite;
+        }
+
+        .detector-screen {
+            width: 120px;
+            height: 40px;
+            background-color: #003300;
+            /* Vert écran LCD sombre */
+            border: 2px solid #006400;
+            margin: 10px auto;
+            color: #00FF00;
+            /* Texte vert fluo */
+            font-family: "TypewriterIsh", monospace;
+            font-size: 13px;
+            /* Petit pour effet pixelisé */
+            line-height: 1.2;
+            text-align: center;
+            padding-top: 5px;
+            overflow: hidden;
+            font-weight: bold;
+            text-shadow: 0 0 5px lime;
+        }
+
+        .detector-button {
+            background-color: #555;
+            color: white;
+            border: 1px solid #222;
+            padding: 3px 6px;
+            font-size: 10px;
+            margin: 5px 2px;
+            display: inline-block;
+            border-radius: 3px;
+            box-shadow: 1px 1px 1px #222;
+        }
+
+        .detector-button.red-button {
+            background-color: #800000;
+            color: yellow;
+        }
+
+        .made-in-sticker {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            font-size: 8px;
+            background-color: #eee;
+            color: #333;
+            padding: 1px 3px;
+            border: 1px solid #999;
+            transform: rotate(-5deg);
+        }
+
+        /* Slogans et Texte */
+        .slogan {
+            font-size: 20px;
+            color: yellow;
+            margin: 15px 5%;
+            padding: 8px;
+            background-color: rgba(100, 0, 0, 0.8);
+            /* Rouge sang foncé */
+            border-left: 5px solid red;
+            border-right: 5px solid red;
+            transform: skewX(-10deg);
+            /* Texte incliné */
+            font-family: "StencilLike", Impact, sans-serif;
+        }
+
+        .slogan.alt {
+            color: lime;
+            background-color: rgba(0, 50, 0, 0.8);
+            border-color: green;
+            transform: skewX(10deg);
+        }
+
+        .confidential-stamp {
+            display: inline-block;
+            border: 3px double red;
+            padding: 5px 10px;
+            color: red;
+            font-size: 16px;
+            text-transform: uppercase;
+            transform: rotate(-5deg);
+            margin-top: 10px;
+            font-family: "TypewriterIsh";
+            font-weight: bold;
+        }
+
+        /* Détails Comiques */
+        .irrefutable-proof {
+            position: absolute;
+            top: 150px;
+            right: 10px;
+            color: yellow;
+            font-size: 12px;
+            transform: rotate(10deg);
+            padding: 5px;
+            background-color: rgba(255, 0, 0, 0.5);
+            border: 1px dashed yellow;
+        }
+
+        .arrow-to-nothing {
+            position: absolute;
+            top: 170px;
+            right: 90px;
+            /* Pointe vers rien d'intéressant */
+            font-size: 30px;
+            color: yellow;
+            transform: rotate(-45deg);
+        }
+
+        .indifferent-cat {
+            position: absolute;
+            bottom: 5px;
+            left: 25%;
+            font-size: 25px;
+            /* Emoji chat */
+            opacity: 0.8;
+        }
+
+        /* Appel à l'action */
+        .cta-button {
+            display: inline-block;
+            padding: 15px 25px;
+            margin-top: 25px;
+            font-size: 26px;
+            font-weight: bold;
+            color: black;
+            background: linear-gradient(to bottom, yellow, orange);
+            border: 5px outset red;
+            border-radius: 8px;
+            text-shadow: 1px 1px white;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+            cursor: pointer;
+            font-family: "StencilLike", Impact, sans-serif;
+            animation: blinkYellow 1.5s infinite;
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(to bottom, #FFFF66, #FF8C00);
+        }
+
+        .disclaimer {
+            font-size: 9px;
+            color: #888;
+            margin-top: 20px;
+            line-height: 1.2;
+            padding: 5px;
+            border-top: 1px dotted #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="conspiracy-ad-container">
+        <div class="main-alert-banner">ILS SONT DÉJÀ PARMI NOUS !</div>
+
+        <div class="scene-container">
+            <!-- Arrière-plan conspirationniste -->
+            <div class="ufo">
+                <div class="ufo-light l1"></div>
+                <div class="ufo-light l2"></div>
+                <div class="ufo-light l3"></div>
+            </div>
+            <div class="ufo-beam"></div>
+
+            <!-- Alien caché -->
+            <div class="alien-tree-silhouette"></div>
+            <div class="hidden-alien-eyes"></div>
+            <div class="hidden-alien-eyes" style="left: calc(15% + 25px);"></div>
+
+            <!-- Détail comique : chat indifférent -->
+            <div class="indifferent-cat">😼</div>
+
+            <!-- Détail comique : preuve bidon -->
+            <div class="arrow-to-nothing">➔</div>
+            <div class="irrefutable-proof">PREUVE IRRÉFUTABLE D'ACTIVITÉ !</div>
+        </div>
+
+        <div class="gadget-section">
+            <h2 class="gadget-name">LE DÉTECTEUR ALIEN X-5000</h2>
+            <div class="detector-case">
+                <div class="detector-antenna"></div>
+                <div>
+                    <span class="detector-led led-red"></span>
+                    <span class="detector-led led-green"></span>
+                    <span class="detector-led led-yellow"></span>
+                </div>
+                <div class="detector-screen">
+                    ALIEN DETECTED!<br>THREAT: HIGH! 👽
+                </div>
+                <div>
+                    <button class="detector-button">SCAN</button>
+                    <button class="detector-button red-button">DEFENSE</button>
+                    <button class="detector-button">ANTI-MIND</button>
+                </div>
+                <div class="made-in-sticker">Made in Pétaouchnok</div>
+            </div>
+        </div>
+
+        <div class="slogan">
+            PROTÉGEZ VOTRE FAMILLE (et vos beaux-parents envahissants*) !
+        </div>
+        <div class="slogan alt">
+            LA VÉRITÉ EST AILLEURS... ET DANS CE DÉTECTEUR !
+        </div>
+
+        <p class="confidential-stamp">TOP SECRET - LEVEL OMEGA</p>
+
+        <button class="cta-button">ACHETEZ AVANT QU'IL NE SOIT TROP TARD !</button>
+
+        <p class="disclaimer">
+            *Le détecteur X-5000 n'a pas été prouvé efficace contre les extraterrestres, les beaux-parents, ou toute
+            autre forme de vie. Les lumières clignotantes peuvent causer des crises d'épilepsie. Ne pas utiliser près de
+            l'eau. Antenne non conçue pour capter la TNT. Batterie non incluse (nécessite 17 piles LR666 non standard).
+            "Made in Pétaouchnok" est une blague (ou pas?). La vérité est probablement que vous perdez votre argent. Ne
+            pas fixer les yeux de l'alien directement, risque de subjugation mentale (ou d'ennui profond).
+        </p>
+    </div>
+
+</body>
+
+</html>

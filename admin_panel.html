@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel d'Administration - SécuriPLUS+ (Zone Ultra Secrète)</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Optionnel: Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- CSS Personnalisé -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #f0f2f5;
+        }
+
+        .admin-header {
+            background-color: #343a40;
+            color: white;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .admin-header .logo-text {
+            font-size: 1.8rem;
+        }
+
+        .admin-header .logo-plus {
+            color: #ffc107;
+        }
+
+        .stat-card {
+            border-left: 5px solid #0d6efd;
+            margin-bottom: 1.5rem;
+            cursor: help;
+            /* Indiquer qu'il y a peut-être quelque chose au survol */
+        }
+
+        .stat-card.warning {
+            border-left-color: #ffc107;
+        }
+
+        .stat-card.danger {
+            border-left-color: #dc3545;
+        }
+
+        .stat-card.success {
+            border-left-color: #198754;
+        }
+
+        .admin-action-button {
+            font-size: 1.5rem;
+            padding: 20px;
+            margin: 10px;
+            width: 200px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .admin-action-button i {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .logout-btn {
+            color: #ffc107 !important;
+            font-weight: bold;
+        }
+
+        .logout-btn:hover {
+            color: #fff !important;
+            background-color: #ffc107;
+        }
+
+        #doNotPushButton {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7);
+            }
+
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(220, 53, 69, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+            }
+        }
+
+        /* Style pour le modal d'indice */
+        .modal-title-custom {
+            font-family: 'Papyrus', fantasy;
+            color: #8A2BE2;
+            /* BlueViolet */
+        }
+
+        .modal-body-custom {
+            font-family: 'Comic Sans MS', cursive;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        if (sessionStorage.getItem('isLoggedInSecuriPLUS') !== 'true') {
+            alert("ACCÈS REFUSÉ ! Vous n'avez pas le badge SécuriPLUS+ VIP ! Redirection vers la page de connexion (où vous échouerez probablement encore).");
+            window.location.href = 'connexion.html';
+        }
+    </script>
+
+    <header class="admin-header text-center">
+        <div class="container d-flex justify-content-between align-items-center">
+            <span class="logo-text">Sécuri<span class="logo-plus">PLUS+</span> :: Panel de Contrôle (Presque)
+                Total</span>
+            <div>
+                <span id="welcomeUser" class="me-3"></span>
+                <button id="logoutButton" class="btn btn-sm logout-btn">Déconnexion (et retour à la réalité)</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2 class="mb-4 text-center">Tableau de Bord de l'Empire SécuriPLUS+</h2>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card stat-card success">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-people-fill"></i> Utilisateurs Enregistrés</h5>
+                        <p class="card-text fs-3 fw-bold">42 <span class="small">(dont 38 sont Kevin avec des faux
+                                comptes)</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card stat-card">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-camera-video-fill"></i> Caméras Vendues</h5>
+                        <p class="card-text fs-3 fw-bold">17 <span class="small">(et 12 retournées)</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card stat-card warning">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-bug-fill"></i> Bugs Corrigés Aujourd'hui</h5>
+                        <p class="card-text fs-3 fw-bold">0 <span class="small">(mais on a ajouté 5 nouveaux !)</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- MODIFIÉ : Ajout d'un title pour l'indice et d'un ID pour le JS -->
+            <div class="col-md-3">
+                <div class="card stat-card danger" id="coffeeCard"
+                    title="Le nombre de cafés est élevé... peut-être que le manuel de cette antiquité est quelque part dans les archives poussiéreuses de ce panel ?">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-cup-hot-fill"></i> Cafés Consommés</h5>
+                        <p class="card-text fs-3 fw-bold">137 <span class="small">(par le stagiaire uniquement)</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-center mb-4">Zone d'Actions Stratégiques (Ne touchez à rien si vous ne savez pas)</h3>
+        <div class="d-flex flex-wrap justify-content-center">
+            <button class="btn btn-primary admin-action-button" data-action="add-fake-client">
+                <i class="bi bi-person-plus-fill"></i> Ajouter un Faux Client
+            </button>
+            <button class="btn btn-info admin-action-button text-white" data-action="generate-fake-invoice">
+                <i class="bi bi-receipt-cutoff"></i> Générer une Facture (Bidon)
+            </button>
+            <button class="btn btn-success admin-action-button" data-action="read-pigeon-mail">
+                <i class="bi bi-chat-dots-fill"></i> Lire les Messages (des pigeons voyageurs)
+            </button>
+            <button class="btn btn-warning admin-action-button" data-action="launch-super-promo">
+                <i class="bi bi-stars"></i> Lancer une "Super" Promo
+            </button>
+            <!-- MODIFIÉ : Ajout d'un ID pour le bouton Paramètres -->
+            <button id="settingsButton" class="btn btn-secondary admin-action-button"
+                data-action="settings-that-do-nothing">
+                <i class="bi bi-gear-fill"></i> Paramètres (qui ne sauvegardent rien)
+            </button>
+            <button id="doNotPushButton" class="btn btn-danger admin-action-button">
+                <i class="bi bi-exclamation-triangle-fill"></i> NE PAS APPUYER (Sauf si vous êtes Kevin)
+            </button>
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-center mb-3">Journal des Événements Récents (et pas très importants)</h3>
+        <div class="list-group shadow-sm">
+            <a href="#" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">10:05 - Kevin a renversé son café sur le serveur (encore).</h6>
+                    <small class="text-muted">Il y a 3 minutes</small>
+                </div>
+                <p class="mb-1 small">Le site est peut-être un peu lent. Ou pas. On ne sait plus.</p>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-warning">
+                <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">09:30 - Tentative de connexion de "DarkHacker666".</h6>
+                    <small class="text-muted">Il y a 38 minutes</small>
+                </div>
+                <p class="mb-1 small">Mot de passe essayé : "12345". Presque ! On a eu chaud.</p>
+            </a>
+            <!-- MODIFIÉ : Ajout d'un indice dans un log -->
+            <a href="#" class="list-group-item list-group-item-action list-group-item-info" id="coffeeLogEntry">
+                <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">08:15 - Maintenance préventive de la machine à café (par Kevin, avec un trombone et
+                        beaucoup d'espoir).</h6>
+                    <small class="text-muted">Ce matin</small>
+                </div>
+                <p class="mb-1 small">Note de Kevin : "Si seulement je trouvais ce satané manuel... Le chef a dit qu'il
+                    était classé sous 'Projets Révolutionnaires Non Commencés' dans les archives. Quel blagueur. Il faut
+                    que je vérifie les 'Paramètres' du panel, peut-être que les archives y sont listées."</p>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+                <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">09:15 - Un client a réussi à acheter un produit !</h6>
+                    <small class="text-muted">Il y a 1 heure</small>
+                </div>
+                <p class="mb-1 small">Miracle. On vérifie si le paiement est passé.</p>
+            </a>
+        </div>
+    </div>
+
+    <!-- Modal pour l'indice des Paramètres -->
+    <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title modal-title-custom" id="settingsModalLabel">⚙️ Paramètres Ultra Avancés (et
+                        inutiles) ⚙️</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body modal-body-custom">
+                    <p>Bienvenue dans la zone la plus secrète et la moins fonctionnelle de SécuriPLUS+ !</p>
+                    <p>Nos paramètres sont si avancés qu'ils ne font... absolument rien. Mais ils ont l'air importants,
+                        non ?</p>
+                    <hr>
+                    <h6>Gestion des Archives Documentaires (Poussiéreuses) :</h6>
+                    <ul class="list-group">
+                        <li class="list-group-item">Plans de la cafetière de 1972 (Perdus)</li>
+                        <li class="list-group-item">Stratégies marketing de 1998 (Obsolètes)</li>
+                        <li class="list-group-item">
+                            Manuel "Café pour les Nuls v0.01" (Classé 'Top Secret - Ne pas ouvrir avant l'Apocalypse
+                            Caféinée')
+                            <br>
+                            <small class="text-muted">Dernière localisation connue :
+                                <code>/archives/ultra_secret/top_confidentiel/ne_pas_regarder_ici/vraiment_pas/manuel_cafe_divin.html</code></small>
+                            <br>
+                            <a href="manuel_cafe_divin.html" class="btn btn-sm btn-outline-success mt-2">Tenter
+                                d'accéder au Saint Graal (Manuel du Café)</a>
+                        </li>
+                        <li class="list-group-item">Liste des blagues du CEO (Non approuvées par le service humour)</li>
+                    </ul>
+                    <p class="mt-3 small text-danger">Attention : Cliquer sur les liens peut entraîner une distorsion de
+                        la réalité ou une envie soudaine de café.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer (et ne rien
+                        sauvegarder)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="text-center py-4 mt-5 bg-dark text-light">
+        <p>© <span id="currentYearAdmin"></span> SécuriPLUS+ Administration - "Avec de grands pouvoirs viennent de
+            grandes... pannes de café."</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('currentYearAdmin').textContent = new Date().getFullYear();
+
+        const loggedInUser = sessionStorage.getItem('loggedInUserSecuriPLUS');
+        const welcomeUserSpan = document.getElementById('welcomeUser');
+
+        if (loggedInUser === "kevin.stagiaire@securiplus.com") { // Compte spécial pour Kevin
+            welcomeUserSpan.innerHTML = 'Bienvenue, Kevin ! <span class="badge bg-warning text-dark">PS : J\'ai entendu dire que le manuel du café est caché dans les "Paramètres"... rubrique archives. Courage !</span>';
+        } else if (loggedInUser) {
+            welcomeUserSpan.textContent = 'Bienvenue, ' + loggedInUser.split('@')[0] + ' (Maître du Monde... presque) !';
+        } else {
+            welcomeUserSpan.textContent = 'Bienvenue, Ô Grand Administrateur !';
+        }
+
+        const logoutButton = document.getElementById('logoutButton');
+        logoutButton.addEventListener('click', function () {
+            sessionStorage.removeItem('isLoggedInSecuriPLUS');
+            sessionStorage.removeItem('loggedInUserSecuriPLUS');
+            alert("Déconnexion réussie ! Retour à la dure réalité de la page d'accueil (où rien ne marche vraiment non plus).");
+            window.location.href = 'index.html';
+        });
+
+        const doNotPushButton = document.getElementById('doNotPushButton');
+        let doNotPushClicks = 0;
+        doNotPushButton.addEventListener('click', function () {
+            doNotPushClicks++;
+            let response;
+            if (doNotPushClicks === 3) {
+                response = "Okay, okay, vous insistez ! Le chef a une obsession pour les 'archives secrètes'. Il parle souvent d'un dossier 'ultra_secret' quand il pense que personne n'écoute. Peut-être que le manuel du café y est ? Essayez les 'Paramètres'.";
+                doNotPushButton.innerHTML = '<i class="bi bi-emoji-dizzy-fill"></i> VOUS M\'ÉPUISEZ !';
+            } else if (doNotPushClicks > 3) {
+                response = "Sérieusement, arrêtez de cliquer. Allez chercher ce café !";
+                doNotPushButton.disabled = true;
+            } else {
+                const responses = [
+                    "Et voilà, vous l'avez fait. Le serveur est maintenant en PLS. Bravo.",
+                    "Un chaton vient de perdre ses ailes à cause de vous. J'espère que vous êtes fier.",
+                    "Le stagiaire Kevin vient d'être promu CEO. Attendez-vous à des changements... intéressants.",
+                    "Alerte ! Le système va s'autodétruire dans 3... 2... 1... Ah non, fausse alerte. Ou pas."
+                ];
+                response = responses[Math.floor(Math.random() * responses.length)];
+            }
+            alert(response);
+        });
+
+        const adminActionButtons = document.querySelectorAll('.admin-action-button');
+        const settingsButton = document.getElementById('settingsButton');
+        const settingsModal = new bootstrap.Modal(document.getElementById('settingsModal')); // Initialiser le modal
+
+        adminActionButtons.forEach(button => {
+            if (button.id !== 'doNotPushButton' && button.id !== 'settingsButton') {
+                button.addEventListener('click', function () {
+                    alert("Fonctionnalité en cours de développement par notre équipe d'experts (Kevin est très occupé avec le café en ce moment). Revenez en 2035 !");
+                });
+            }
+        });
+
+        // Logique pour le bouton Paramètres
+        if (settingsButton) {
+            settingsButton.addEventListener('click', function () {
+                settingsModal.show(); // Afficher le modal Bootstrap
+            });
+        }
+
+        // Indice Console
+        console.log("%cPsst... Admin ! Si vous cherchez le manuel du café, le chef est obsédé par les 'archives'. La fonction 'accesChef()' n'existe plus, il l'a supprimée après l'incident du 'café explosif'. Mais il a laissé des traces dans les logs et les paramètres...", "color: #8A2BE2; font-style: italic; font-size: 14px;");
+        console.log("%cIndice pour les plus curieux : Le chemin vers le manuel est /archives/ultra_secret/top_confidentiel/ne_pas_regarder_ici/vraiment_pas/manuel_cafe_divin.html", "background: #333; color: yellow; font-size: 10px;");
+
+    </script>
+</body>
+
+</html>

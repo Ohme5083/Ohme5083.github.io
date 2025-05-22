@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 GAGNEZ UN VOYAGE SUR MARS! GRATUIT*! 🚀</title>
+    <style>
+        @font-face {
+            font-family: 'RetroFuturistic';
+            /* Simuler Eurostile ou similaire */
+            src: local('Arial Narrow'), local('Helvetica Neue'), sans-serif;
+            /* Fallback */
+        }
+
+        @font-face {
+            font-family: 'EnthusiasticScript';
+            /* Simuler une police manuscrite */
+            src: local('Comic Sans MS'), local('Brush Script MT'), cursive;
+        }
+
+        @keyframes rocketFlame {
+            0% {
+                transform: scaleY(1) skewY(0deg);
+                opacity: 0.8;
+                background-position: 0% 0%;
+            }
+
+            50% {
+                transform: scaleY(1.2) skewY(5deg);
+                opacity: 1;
+                background-position: 50% 50%;
+            }
+
+            100% {
+                transform: scaleY(1) skewY(0deg);
+                opacity: 0.8;
+                background-position: 0% 0%;
+            }
+        }
+
+        @keyframes astronautFloat {
+            0% {
+                transform: translateY(0px) rotate(-2deg);
+            }
+
+            50% {
+                transform: translateY(-8px) rotate(3deg);
+            }
+
+            100% {
+                transform: translateY(0px) rotate(-2deg);
+            }
+        }
+
+        @keyframes starTwinkle {
+
+            0%,
+            100% {
+                opacity: 0.7;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes helmetFog {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 0.2;
+            }
+
+            /* Légère buée */
+            100% {
+                opacity: 0;
+            }
+        }
+
+
+        body {
+            font-family: "RetroFuturistic", "Arial Narrow", sans-serif;
+            background-color: #000022;
+            /* Bleu nuit très profond pour l'espace */
+            margin: 0;
+            padding: 20px;
+            color: #FFFFFF;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .mars-ad-poster {
+            max-width: 700px;
+            /* Format affiche de magazine */
+            border: 10px solid #555577;
+            /* Cadre gris "métal" */
+            background: linear-gradient(to bottom, #000011, #000033, #110022);
+            /* Dégradé spatial sombre */
+            padding: 20px;
+            box-shadow: 0 0 25px 5px rgba(100, 100, 200, 0.3);
+            text-align: center;
+            position: relative;
+            /* Pour les éléments superposés */
+        }
+
+        /* Étoiles simplistes */
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: starTwinkle 3s infinite ease-in-out;
+        }
+
+        .s1 {
+            width: 2px;
+            height: 2px;
+            top: 10%;
+            left: 15%;
+            animation-delay: 0.5s;
+        }
+
+        .s2 {
+            width: 3px;
+            height: 3px;
+            top: 30%;
+            left: 80%;
+            animation-delay: 1s;
+        }
+
+        .s3 {
+            width: 1px;
+            height: 1px;
+            top: 70%;
+            left: 25%;
+            animation-delay: 0.2s;
+        }
+
+        .s4 {
+            width: 2px;
+            height: 2px;
+            top: 50%;
+            left: 5%;
+            animation-delay: 1.5s;
+        }
+
+        .s5 {
+            width: 3px;
+            height: 3px;
+            top: 85%;
+            left: 90%;
+            animation-delay: 0.8s;
+        }
+
+        .s-asterisk {
+            /* Étoile astérisque */
+            top: 20%;
+            left: 60%;
+            font-size: 10px;
+            color: yellow;
+            animation-delay: 0.3s;
+        }
+
+
+        .main-title {
+            font-family: "RetroFuturistic", Impact, sans-serif;
+            font-size: 48px;
+            color: #FFFF00;
+            /* Jaune vif */
+            text-shadow: 3px 3px 0px #FF4500,
+                /* Ombre OrangeRed */
+                0 0 15px #FFA500;
+            /* Lueur Orange */
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+
+        .main-title .free-asterisk {
+            color: #FF0000;
+            /* Rouge pour l'astérisque */
+            font-size: 50px;
+            /* Bien visible */
+            vertical-align: super;
+        }
+
+        .scene-elements {
+            position: relative;
+            height: 350px;
+            /* Espace pour la scène */
+            margin-bottom: 20px;
+        }
+
+        /* Planète Mars */
+        .planet-mars {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 180px;
+            height: 180px;
+            background-color: #FF4500;
+            /* Rouge Mars très vif */
+            border-radius: 50%;
+            box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.5) inset,
+                /* Ombre interne */
+                0 0 20px #FF6347;
+            /* Lueur Tomato */
+            overflow: hidden;
+            /* Pour les canaux et le drapeau */
+        }
+
+        .mars-canal {
+            /* Canaux dessinés grossièrement */
+            position: absolute;
+            width: 10px;
+            height: 120%;
+            background-color: rgba(139, 0, 0, 0.3);
+            /* DarkRed transparent */
+        }
+
+        .canal1 {
+            top: -10%;
+            left: 30%;
+            transform: rotate(20deg);
+        }
+
+        .canal2 {
+            top: -10%;
+            left: 60%;
+            transform: rotate(-15deg);
+        }
+
+        .mars-flag {
+            position: absolute;
+            top: 40px;
+            left: 90px;
+            width: 3px;
+            height: 30px;
+            /* Mât */
+            background-color: #AAA;
+            transform: rotate(-10deg);
+        }
+
+        .mars-flag::after {
+            /* Drapeau en "papier" */
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 3px;
+            width: 20px;
+            height: 12px;
+            background-color: #E0E0E0;
+            /* Blanc cassé */
+            border: 1px solid #999;
+            clip-path: polygon(0 0, 100% 10%, 90% 100%, 10% 90%);
+            /* Ondulation basique */
+        }
+
+
+        /* Fusée */
+        .rocket {
+            position: absolute;
+            top: 80px;
+            left: 10%;
+            width: 60px;
+            height: 200px;
+            /* background-color: #C0C0C0; /* Argent */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: rotate(-15deg);
+        }
+
+        .rocket-body {
+            width: 100%;
+            height: 140px;
+            background: linear-gradient(to right, #D3D3D3, #A9A9A9, #D3D3D3);
+            /* Argent avec reflet */
+            clip-path: polygon(20% 0, 80% 0, 100% 100%, 0% 100%);
+            /* Forme conique */
+            border-top: 10px solid #B0B0B0;
+            /* Section en carton-pâte */
+            box-shadow: 2px 2px 0px #777;
+            /* Rivets grossiers (simulés par ombre) */
+        }
+
+        .rocket-body::before {
+            /* Section en "tôle ondulée" */
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background-image: repeating-linear-gradient(0deg, #999, #999 5px, #777 5px, #777 10px);
+        }
+
+        .rocket-nose {
+            width: 40px;
+            height: 40px;
+            background-color: #FF6347;
+            /* Rouge Tomato */
+            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+            margin-bottom: -1px;
+            /* Pour chevaucher le corps */
+        }
+
+        .rocket-fins {
+            display: flex;
+            justify-content: space-between;
+            width: 120%;
+            margin-top: -10px;
+        }
+
+        .fin {
+            width: 25px;
+            height: 50px;
+            background-color: #B0B0B0;
+            clip-path: polygon(0 0, 100% 50%, 0% 100%);
+        }
+
+        .fin.left {
+            transform: scaleX(-1) translateX(-10px);
+        }
+
+        .fin.right {
+            transform: translateX(10px);
+        }
+
+        .rocket-flame {
+            width: 40px;
+            height: 60px;
+            background: linear-gradient(to top, yellow, orange, red);
+            /* Dégradé pour flamme */
+            border-radius: 0 0 50% 50%;
+            margin-top: -5px;
+            animation: rocketFlame 0.2s infinite;
+            box-shadow: 0 0 15px orange;
+        }
+
+        .no-refunds-sign {
+            position: absolute;
+            bottom: 60px;
+            right: 0;
+            font-size: 8px;
+            color: #333;
+            background-color: #AAA;
+            padding: 1px 3px;
+            transform: rotate(5deg);
+            border: 1px solid #555;
+        }
+
+
+        /* Astronaute */
+        .astronaut {
+            position: absolute;
+            top: 120px;
+            left: 45%;
+            animation: astronautFloat 4s infinite ease-in-out;
+            text-align: center;
+        }
+
+        .astronaut-suit {
+            width: 70px;
+            height: 100px;
+            background-color: #F0F8FF;
+            /* AliceBlue - Tissu synthétique brillant */
+            border-radius: 30px 30px 10px 10px;
+            border: 2px solid #ADD8E6;
+            /* LightBlue - Coutures ? */
+            position: relative;
+            overflow: hidden;
+            /* Pour les plis */
+        }
+
+        .suit-pleat {
+            /* Plis disgracieux */
+            position: absolute;
+            width: 120%;
+            height: 10px;
+            background-color: rgba(173, 216, 230, 0.3);
+            /* LightBlue transparent */
+        }
+
+        .pleat1 {
+            top: 30%;
+            left: -10%;
+            transform: rotate(5deg);
+        }
+
+        .pleat2 {
+            top: 60%;
+            left: -5%;
+            transform: rotate(-3deg);
+        }
+
+        .astronaut-helmet {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(200, 200, 255, 0.3);
+            /* Visière transparente */
+            border: 5px solid #B0C4DE;
+            /* LightSteelBlue - Cadre casque */
+            border-radius: 50%;
+            position: absolute;
+            top: -25px;
+            left: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .helmet-reflection {
+            width: 20px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            transform: rotate(20deg) translate(10px, -5px);
+        }
+
+        .helmet-fog-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0);
+            border-radius: 50%;
+            animation: helmetFog 6s infinite alternate;
+        }
+
+        .astronaut-face {
+            /* Yeux écarquillés */
+            font-size: 18px;
+        }
+
+        .floating-hair {
+            /* Mèche de cheveux */
+            position: absolute;
+            top: -30px;
+            left: 20px;
+            width: 15px;
+            height: 3px;
+            background-color: #543210;
+            /* Brun */
+            transform: rotate(-45deg);
+            border-radius: 2px;
+        }
+
+        .astronaut-hand-ok {
+            font-size: 30px;
+            position: absolute;
+            top: 30px;
+            right: -20px;
+            transform: rotate(15deg);
+        }
+
+        .one-way-suitcase {
+            position: absolute;
+            bottom: -20px;
+            left: -30px;
+            width: 40px;
+            height: 30px;
+            background-color: #8B4513;
+            /* SaddleBrown */
+            border: 1px solid #4A2311;
+            border-radius: 3px;
+        }
+
+        .one-way-suitcase::after {
+            /* Étiquette */
+            content: "MARS (Aller Simple)";
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            font-size: 6px;
+            color: black;
+            background-color: white;
+            padding: 1px;
+            transform: rotate(-5deg);
+        }
+
+        /* Logo du concours */
+        .contest-logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 100px;
+            padding: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px dashed #AAA;
+            font-family: "EnthusiasticScript", cursive;
+        }
+
+        .contest-logo img {
+            /* Simuler un logo moche si on avait une image */
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
+            filter: drop-shadow(1px 1px 0px #555);
+            /* Ombre Paint */
+            /* Placeholder pour logo de fusée de travers */
+        }
+
+        .logo-text {
+            font-size: 12px;
+            color: #FFD700;
+        }
+
+        .logo-rocket-char {
+            font-size: 20px;
+            display: inline-block;
+            transform: rotate(15deg);
+            color: #FF6347;
+        }
+
+        /* Conditions en petits caractères */
+        .fine-print {
+            font-size: 7px;
+            /* Presque illisible */
+            line-height: 1;
+            color: #777799;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 5px;
+            margin-top: 20px;
+            text-align: justify;
+            height: 50px;
+            /* Limiter la hauteur pour simuler un bloc dense */
+            overflow: hidden;
+            position: relative;
+        }
+
+        .fine-print::after {
+            /* Pour estomper le bas du texte et donner l'impression que ça continue */
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 15px;
+            background: linear-gradient(to bottom, transparent, #000022);
+        }
+
+        .slightly-readable-conditions {
+            font-weight: bold;
+            color: #9999BB;
+            /* Légèrement plus clair */
+        }
+
+        /* Formulaire d'inscription interminable */
+        .long-form-visual {
+            position: absolute;
+            bottom: 70px;
+            right: 10px;
+            width: 50px;
+            height: 60px;
+            background-color: #FFFFE0;
+            /* LightYellow - papier */
+            border: 1px solid #ccc;
+            box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+            font-size: 5px;
+            color: #555;
+            padding: 2px;
+            overflow: hidden;
+            text-align: left;
+            line-height: 0.9;
+        }
+
+        .form-title {
+            font-weight: bold;
+            font-size: 6px;
+            text-align: center;
+            margin-bottom: 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="mars-ad-poster">
+        <!-- Étoiles -->
+        <div class="star s1"></div>
+        <div class="star s2"></div>
+        <div class="star s3"></div>
+        <div class="star s4"></div>
+        <div class="star s5"></div>
+        <div class="star s-asterisk">*</div>
+
+        <div class="contest-logo">
+            <!-- <img src="path_to_bad_rocket_logo.png" alt="Logo MarsTrip"> -->
+            <span class="logo-rocket-char">🚀</span>
+            <span class="logo-text">MarsTrip Adventures Inc.</span>
+        </div>
+
+        <h1 class="main-title">GAGNEZ UN VOYAGE SUR MARS !<br>EXPLOREZ LA PLANÈTE ROUGE... GRATUITEMENT<span
+                class="free-asterisk">*</span> !</h1>
+
+        <div class="scene-elements">
+            <div class="planet-mars">
+                <div class="mars-canal canal1"></div>
+                <div class="mars-canal canal2"></div>
+                <div class="mars-flag"></div>
+            </div>
+
+            <div class="rocket">
+                <div class="rocket-nose"></div>
+                <div class="rocket-body"></div>
+                <div class="rocket-fins">
+                    <div class="fin left"></div>
+                    <div class="fin right"></div>
+                </div>
+                <div class="rocket-flame"></div>
+                <div class="no-refunds-sign">No Refunds</div>
+            </div>
+
+            <div class="astronaut">
+                <div class="floating-hair"></div>
+                <div class="astronaut-helmet">
+                    <div class="helmet-reflection"></div>
+                    <div class="astronaut-face">😳</div> <!-- Yeux écarquillés / confusion -->
+                    <div class="helmet-fog-overlay"></div>
+                </div>
+                <div class="astronaut-suit">
+                    <div class="suit-pleat pleat1"></div>
+                    <div class="suit-pleat pleat2"></div>
+                </div>
+                <div class="astronaut-hand-ok">👌</div>
+                <div class="one-way-suitcase"></div>
+            </div>
+        </div>
+
+        <div class="long-form-visual">
+            <div class="form-title">FORMULAIRE D'INSCRIPTION (Partie 1/73)</div>
+            Section A: Identité<br>
+            Nom: .................<br>
+            Prénom: ...............<br>
+            Groupe Sanguin (pour expériences): ...<br>
+            Section B: Responsabilités<br>
+            Je soussigné(e) décharge MarsTrip Adventures Inc. de toute responsabilité en cas de désintégration,
+            enlèvement alien, exposition aux radiations, ennui mortel, consommation par la faune martienne (si
+            existante), ou tout autre désagrément cosmique... (cont. p.2)
+            <br>Don d'organes (cochez si OK): ☐
+        </div>
+
+
+        <div class="fine-print">
+            <span class="slightly-readable-conditions">*CONDITIONS DE PARTICIPATION :</span> Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit. Vivamus vitae ante vel lorem dictum blandit. Proin eget tortor risus. Cras
+            ultricies ligula sed magna dictum porta. Curabitur aliquet quam id dui posuere blandit. Vestibulum ac diam
+            sit amet quam vehicula elementum sed sit amet dui. Pellentesque in ipsum id orci porta dapibus. Nulla quis
+            lorem ut libero malesuada feugiat. <span class="slightly-readable-conditions">Aller simple uniquement.
+                Nourriture, oxygène et billet retour non inclus. Participation aux expériences médicales
+                obligatoire.</span> Cras ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget
+            tincidunt nibh pulvinar a. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec
+            sollicitudin molestie malesuada. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.
+            Vivamus suscipit tortor eget felis porttitor volutpat. Sed porttitor lectus nibh. Quisque velit nisi,
+            pretium ut lacinia in, elementum id enim. Donec rutrum congue leo eget malesuada. Le gagnant sera
+            responsable de la construction de son propre abri sur Mars. MarsTrip Adventures Inc. se réserve le droit de
+            modifier ou d'annuler le voyage à tout moment, notamment en cas de météo spatiale défavorable ou si nous
+            trouvons un pigeon plus riche. Les chances de survie sont estimées à... eh bien, bonne chance ! En
+            participant, vous acceptez de céder les droits de votre histoire de vie (et de mort) pour une adaptation en
+            film de série Z. Le "Grand Confort" de la fusée est une notion subjective. Les toilettes sont en option.
+        </div>
+    </div>
+
+</body>
+
+</html>
